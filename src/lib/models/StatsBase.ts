@@ -1,5 +1,31 @@
-import { AttributeID } from "../constants"
+import { AttributeID } from "../constants";
+import { Stat } from "./Disc";
 
+export function viewStats(statsBase: StatsBase) {
+    let stats: Stat[] = []
+    console.log(statsBase['ether_bonus']);
+
+    Object.keys(statsBase).forEach((param) => {
+        const stat: Stat = new Stat();
+        console.log(param);
+        const id = findKeyByValue(HOYO_MAP, param);
+        if (id === undefined)
+            return;
+
+        stat.id = +id;
+        const value = statsBase[param as keyof StatsBase];
+        if (value !== 0) {
+            stat.value = statsBase[param as keyof StatsBase];
+            stats.push(stat)
+        }
+    });
+
+    return stats
+}
+
+function findKeyByValue(object: { [id: number]: StatsBaseKeys }, value: string) {
+    return Object.keys(object).find(key => object[+key] === value);
+}
 
 export class StatsBase {
     hp_perc: number = 0.0
@@ -23,11 +49,9 @@ export class StatsBase {
     ice_bonus: number = 0.0
     elec_bonus: number = 0.0
     ether_bonus: number = 0.0
-
 }
 
-export type StatsBaseKeys = keyof StatsBase
-//export type StatsValues = (typeof StatsBase)[StatsKeys]
+export type StatsBaseKeys = keyof StatsBase;
 
 
 export const HOYO_MAP: { [key: number]: StatsBaseKeys } = {

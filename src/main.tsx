@@ -1,10 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import DiscSetForm from './StatsView'
+import App from './DiscSetView'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    < DiscSetForm />
+    < App />
   </StrictMode>,
 )
