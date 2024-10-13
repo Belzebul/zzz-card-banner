@@ -33,4 +33,12 @@ export class Utils {
     static truncate10ths(value: number) {
         return Math.floor(value * 10) / 10
     }
+
+    static readValue(value: string) {
+        if (value.endsWith('%')) {
+            return Utils.precisionRound(parseFloat(value.slice(0, value.length - 1)))
+        }
+        return Utils.precisionRound(parseFloat(value))
+    }
+
 }

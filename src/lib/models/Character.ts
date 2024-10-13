@@ -3,6 +3,7 @@ import { StatsBase } from "./StatsBase";
 
 export class Character extends StatsBase {
     lvl: number = 60
+    name: string = ""
     char_base: StatsBase = new StatsBase()
     wengine: StatsBase = new StatsBase()
     discSet: DiscSet = new DiscSet()

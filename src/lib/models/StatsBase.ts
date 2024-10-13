@@ -3,11 +3,9 @@ import { Stat } from "./Disc";
 
 export function viewStats(statsBase: StatsBase) {
     let stats: Stat[] = []
-    console.log(statsBase['ether_bonus']);
 
     Object.keys(statsBase).forEach((param) => {
         const stat: Stat = new Stat();
-        console.log(param);
         const id = findKeyByValue(HOYO_MAP, param);
         if (id === undefined)
             return;
@@ -53,8 +51,7 @@ export class StatsBase {
 
 export type StatsBaseKeys = keyof StatsBase;
 
-
-export const HOYO_MAP: { [key: number]: StatsBaseKeys } = {
+export const HOYO_MAP: { [key: number]: StatsBaseKeys; } = {
     [AttributeID.HP_BASE]: "hp",
     [AttributeID.HP_P]: "hp_perc",
     [AttributeID.HP_FLAT]: "hp",

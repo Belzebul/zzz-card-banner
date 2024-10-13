@@ -1,62 +1,10 @@
 import { Character } from '../models/Character'
 import { Disc, DiscSet, Stat } from '../models/Disc'
 import { HOYO_MAP, StatsBase } from '../models/StatsBase'
+import { Avatar, Equip, HoyolabData, Property, Skill, Suit, Weapon } from '../types/hoyolab_types'
 import { Utils } from '../Utils'
 import { CharacterBuilder } from './hakushin_parser'
 
-export interface HoyolabData {
-    [id: string]: Avatar[]
-
-}
-
-interface Avatar {
-    id: number
-    level: number
-    name_mi18n: string
-    equip?: Equip[]
-    weapon?: Weapon | null
-    skills: Skill[]
-}
-
-interface Equip {
-    id: number
-    level: number
-    name: string
-    rarity: string
-    equip_suit: Suit
-    properties: Property[]
-    main_properties: Property[]
-    equipment_type: number
-}
-
-interface Weapon {
-    level: number
-    name: string
-    properties: Property[]
-    main_properties: Property[]
-}
-
-interface Skill {
-    level: number
-}
-
-interface Suit {
-    suit_id: number
-    own: number
-}
-
-
-interface Property {
-    property_id: number
-    base: string
-}
-
-function readValue(value: string) {
-    if (value.endsWith('%')) {
-        return Utils.precisionRound(parseFloat(value.slice(0, value.length - 1)))
-    }
-    return Utils.precisionRound(parseFloat(value))
-}
 
 export class ServiceHoyolab {
     json_hoyo: HoyolabData
@@ -148,7 +96,7 @@ export class ServiceDiscset {
 
         const main_stats: Stat = new Stat()
         main_stats.id = equip.main_properties[0].property_id
-        main_stats.value = readValue(equip.main_properties[0].base)
+        main_stats.value = Utils.readValue(equip.main_properties[0].base)
 
         disc.main_stats = main_stats
         disc.substats = this.buildSubStats(equip.properties)
@@ -161,7 +109,7 @@ export class ServiceDiscset {
         for (const prop of properties) {
             const stat: Stat = new Stat()
             stat.id = prop.property_id
-            stat.value = readValue(prop.base)
+            stat.value = Utils.readValue(prop.base)
             substats.push(stat)
         }
 

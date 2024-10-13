@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './DiscSetView'
 import './index.css'
+import App from './lib/components/DiscSetView'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

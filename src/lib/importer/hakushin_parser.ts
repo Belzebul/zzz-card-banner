@@ -1,57 +1,12 @@
 import game_data from "../../data/hakushin_characters.json"
 import { Character } from "../models/Character"
 import { HOYO_MAP, StatsBase } from "../models/StatsBase"
+import { Avatar, Hakushin_data } from "../types/hakushin_types"
 import { Utils } from "../Utils"
 
-interface Hakushin_data {
-    [index: string]: Avatar
-}
-
-interface Avatar {
-    Id: number
-    Name: string
-    CodeName: string
-    ElementType: { [id: string]: string }
-    Stats: Stats
-    Level: { [id: string]: CharLevel }
-    ExtraLevel: { [id: string]: ExtraLevel }
-}
-
-interface Stats {
-    HpGrowth: number
-    HpMax: number
-    Attack: number
-    AttackGrowth: number
-    Defence: number
-    DefenceGrowth: number
-    Crit: number
-    CritDamage: number
-    ElementAbnormalPower: number    // anomaly mastery
-    ElementMystery: number          // anomaly proficient
-    BreakStun: number
-    PenRate: number
-    SpRecover: number
-}
-
-interface CharLevel {
-    HpMax: number
-    Attack: number
-    Defence: number
-}
-
-interface ExtraLevel {
-    MaxLevel: number
-    Extra: { [id: string]: Extra }
-}
-
-interface Extra {
-    Prop: number
-    Value: number
-}
 
 export class CharacterBuilder {
     character: Character
-    name: string
     lvl: number
     basic_lvl: number
     dodge_lvl: number
@@ -63,7 +18,6 @@ export class CharacterBuilder {
 
     constructor(name: string, lvl: number, basic_lvl: number, special_lvl: number, dodge_lvl: number, chain_lvl: number, core_lvl: number, assist_lvl: number) {
         this.lvl = lvl
-        this.name = name
         this.basic_lvl = basic_lvl
         this.dodge_lvl = dodge_lvl
         this.assist_lvl = assist_lvl
@@ -71,6 +25,7 @@ export class CharacterBuilder {
         this.chain_lvl = chain_lvl
         this.core_lvl = core_lvl
         this.character = new Character()
+        this.character.name = name
         this.char_raw = new ServiceHakushin().char_base[name]
     }
 
