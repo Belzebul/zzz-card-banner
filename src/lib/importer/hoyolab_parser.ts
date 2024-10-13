@@ -92,7 +92,8 @@ export class ServiceDiscset {
         const disc: Disc = new Disc()
         disc.lvl = equip.level
         disc.pos = equip.equipment_type
-        disc.equip_set = equip.equip_suit.suit_id
+        disc.rarity = equip.rarity
+        disc.equipset_id = equip.equip_suit.suit_id
 
         const main_stats: Stat = new Stat()
         main_stats.id = equip.main_properties[0].property_id

@@ -9,7 +9,8 @@ export class Stat {
 export class Disc {
     lvl: number = 15
     pos: number = 0
-    equip_set: number = 0
+    rarity: string = "S"
+    equipset_id: number = 0
     main_stats: Stat = new Stat()
     substats: Stat[] = []
 }

@@ -1,3 +1,4 @@
+import { StyleProvider } from '@ant-design/cssinjs';
 import { ConfigProvider, Flex, Layout, theme } from 'antd';
 import { Content, Header } from 'antd/es/layout/layout';
 import React from 'react';
@@ -75,7 +76,9 @@ const App: React.FC = () => (
             "algorithm": theme.darkAlgorithm
         }}
     >
-        <ExternalLayout />
+        <StyleProvider hashPriority="low">
+            <ExternalLayout />
+        </StyleProvider>
     </ConfigProvider >
 );
 

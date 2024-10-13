@@ -4,7 +4,8 @@ import { DiscStatCard } from "./DiscStatCard";
 
 export const DiscSetPreview = (discSet: DiscSet) => {
     return (
-        <Flex gap={8} style={{ width: 408, margin: 'auto 8px' }} wrap>
+        <Flex gap={8} wrap style={{ overflow: "hidden", width: 450, margin: 'auto 8px' }}>
+
             {discSet.discs.map((disc, key) => (
                 DiscStatCard(disc, key)
             ))}
