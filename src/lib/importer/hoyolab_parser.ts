@@ -1,6 +1,7 @@
 import { Character } from '../models/Character'
 import { Disc, DiscSet, Stat } from '../models/Disc'
-import { HOYO_MAP, StatsBase } from '../models/StatsBase'
+import { HOYO_MAP } from '../models/StatsBase'
+import { WEngine } from '../models/WEngine'
 import { Avatar, Equip, HoyolabData, Property, Skill, Suit, Weapon } from '../types/hoyolab_types'
 import { Utils } from '../Utils'
 import { CharacterBuilder } from './hakushin_parser'
@@ -51,12 +52,17 @@ export class ServiceWengine {
     }
 
     public load_engine() {
-        const wengine = new StatsBase();
+        const wengine = new WEngine();
         if (this.json_wengine === undefined || this.json_wengine === null)
             return wengine;
 
-        wengine.atk = +this.json_wengine.main_properties[0].base
+        wengine.id = this.json_wengine.id
+        wengine.name = this.json_wengine.name
+        wengine.lvl = this.json_wengine.level
+        wengine.star = this.json_wengine.star
+        wengine.rarity = this.json_wengine.rarity
 
+        wengine.atk = +this.json_wengine.main_properties[0].base
         const second_stats = this.json_wengine.properties[0]
         wengine[HOYO_MAP[second_stats.property_id]] = +second_stats.base
 

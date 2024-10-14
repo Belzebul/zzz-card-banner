@@ -3,6 +3,12 @@
   src: local('Mont Heavy'), url(./fonts/ZZZ_FR.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'paybooc_bold';
+  src: url(./fonts/paybooc-Bold.woff);
+  font-weight: bold;
+}
+
 :root {
   font-family: "zzz_font", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   line-height: 1.5;
@@ -16,8 +22,4 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-div {
-  font-family: "zzz_font";
 }

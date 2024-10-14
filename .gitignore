@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 src/lib/importer/teste.ts
+src/data/hoyolab_character.json

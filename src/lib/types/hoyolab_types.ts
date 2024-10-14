@@ -22,8 +22,11 @@ export interface Equip {
     equipment_type: number
 }
 export interface Weapon {
+    id: number
     level: number
     name: string
+    star: number
+    rarity: string
     properties: Property[]
     main_properties: Property[]
 }

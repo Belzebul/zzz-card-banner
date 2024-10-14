@@ -5,7 +5,11 @@ export interface Avatar {
     Id: number
     Name: string
     CodeName: string
+    Rarity: number | null
+    WeaponType: { [id: string]: string }
     ElementType: { [id: string]: string }
+    HitType: { [id: string]: string }
+    Camp: { [id: string]: string }
     Stats: Stats
     Level: { [id: string]: CharLevel }
     ExtraLevel: { [id: string]: ExtraLevel }

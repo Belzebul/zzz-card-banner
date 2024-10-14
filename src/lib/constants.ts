@@ -154,5 +154,37 @@ export const StatsToReadableShort = {
     [AttributeID.ETHER_DMG]: "Ether"
 }
 
+export const WeaponTypeID = {
+    ATTACK: 1,
+    STUN: 2,
+    ANOMALY: 3,
+    SUPPORT: 4,
+    DEFENSE: 5,
+}
+
+export const HitTypeID = {
+    SLASH: 101,
+    STRIKE: 102,
+    PIERCE: 103,
+}
+
+export const ElementTypeID = {
+    PHYSICAL: 200,
+    FIRE: 201,
+    ICE: 202,
+    ELECTRIC: 203,
+    ETHER: 205,
+}
+
+export const CampID = {
+    CUNNING: 1,
+    VICTORIA: 2,
+    BELOBOG: 3,
+    CALYDON: 4,
+    OBOL: 5,
+    HSOS6: 6,
+    NEPS: 7,
+}
+
 
 

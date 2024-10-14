@@ -1,4 +1,4 @@
-import { ICON_FROM_STAT_MAPPING } from "./components/constantsUI";
+import { ICON_FROM_CAMP_MAPPING, ICON_FROM_ELEMENT_MAPPING, ICON_FROM_STAT_MAPPING, ICON_FROM_WEAPON_MAPPING } from "./components/constantsUI";
 import { Stat } from "./models/Disc";
 
 import discset_data from "../data/base_discset_data.json";
@@ -30,5 +30,18 @@ export class Assets {
 
     public static getRarity(id: string) {
         return Assets.getImageUrl(`/icon/rarity/rarity${id}.png`)
+    }
+
+    static getWeapon(weapon: string) {
+        return Assets.getImageUrl(`/icon/weaponType/${ICON_FROM_WEAPON_MAPPING[+weapon]}`);
+    }
+
+    static getElement(elementid: string) {
+        return Assets.getImageUrl(`/icon/property/${ICON_FROM_ELEMENT_MAPPING[+elementid]}`);
+    }
+
+    static getCamp(camp: string) {
+        console.log(`/icon/camp/${ICON_FROM_CAMP_MAPPING[+camp]}`)
+        return Assets.getImageUrl(`/icon/camp/${ICON_FROM_CAMP_MAPPING[+camp]}`);
     }
 }

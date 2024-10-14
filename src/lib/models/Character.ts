@@ -1,13 +1,14 @@
+import { CharMetadata } from "./CharMetadata";
 import { DiscSet } from "./Disc";
 import { StatsBase } from "./StatsBase";
+import { WEngine } from "./WEngine";
 
 export class Character extends StatsBase {
     lvl: number = 60
-    name: string = ""
     char_base: StatsBase = new StatsBase()
-    wengine: StatsBase = new StatsBase()
+    charMetadata: CharMetadata = new CharMetadata()
+    wengine: StatsBase = new WEngine()
     discSet: DiscSet = new DiscSet()
-
 
     public setCharBase(char_base: StatsBase) {
         this.char_base = char_base

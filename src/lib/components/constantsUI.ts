@@ -1,4 +1,4 @@
-import { AttributeID } from "../constants";
+import { AttributeID, CampID, ElementTypeID, WeaponTypeID } from "../constants";
 
 export const ICON_FROM_STAT_MAPPING: { [id: number]: string } = {
     [AttributeID.HP_BASE]: "prop-hp-icon.png",
@@ -30,4 +30,31 @@ export const ICON_FROM_STAT_MAPPING: { [id: number]: string } = {
     [AttributeID.ICE_DMG]: "IconIce.webp",
     [AttributeID.ELEC_DMG]: "IconElectric.webp",
     [AttributeID.ETHER_DMG]: "IconEther.webp",
+}
+
+export const ICON_FROM_WEAPON_MAPPING: { [id: number]: string } = {
+    [WeaponTypeID.ATTACK]: "IconAttack.webp",
+    [WeaponTypeID.STUN]: "IconStun.webp",
+    [WeaponTypeID.ANOMALY]: "IconAnomaly.webp",
+    [WeaponTypeID.SUPPORT]: "IconSupport.webp",
+    [WeaponTypeID.DEFENSE]: "IconDefense.webp",
+}
+
+export const ICON_FROM_ELEMENT_MAPPING: { [id: number]: string } = {
+    [ElementTypeID.PHYSICAL]: "IconPhysical.webp",
+    [ElementTypeID.FIRE]: "IconFire.webp",
+    [ElementTypeID.ICE]: "IconIce.webp",
+    [ElementTypeID.ELECTRIC]: "IconElectric.webp",
+    [ElementTypeID.ETHER]: "IconEther.webp",
+}
+
+export const ICON_FROM_CAMP_MAPPING: { [id: number]: string } = {
+    [CampID.CUNNING]: "IconCunning.webp",
+    [CampID.VICTORIA]: "IconVictoria.webp",
+    [CampID.BELOBOG]: "IconBelobog.webp",
+    [CampID.CALYDON]: "IconCalydon.webp",
+    [CampID.OBOL]: "IconOBOL.webp",
+    [CampID.HSOS6]: "IconHSOS6.webp",
+    [CampID.NEPS]: "IconNEPS.webp",
+
 }

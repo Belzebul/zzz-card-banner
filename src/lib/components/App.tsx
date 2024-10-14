@@ -6,7 +6,7 @@ import hoyodata from '../../data/hoyolab_character.json';
 import { CharacterID } from '../constants';
 import { ServiceHoyolab } from '../importer/hoyolab_parser';
 import { viewStats } from '../models/StatsBase';
-import { CharProfile } from './CharProfile';
+import { CharProfile } from './charProfilePrevile/CharProfile';
 import { CharStatSummary } from './charStatPreview/CharStatsSummary';
 import { DiscSetPreview } from './discSetPreview/DiscSetPreview';
 
