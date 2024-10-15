@@ -1,20 +1,23 @@
 import { CharMetadata } from "./CharMetadata";
 import { DiscSet } from "./Disc";
+import { SkillSet } from "./SkillSet";
 import { StatsBase } from "./StatsBase";
 import { WEngine } from "./WEngine";
 
 export class Character extends StatsBase {
     lvl: number = 60
+    rank: number = 0
     char_base: StatsBase = new StatsBase()
     charMetadata: CharMetadata = new CharMetadata()
-    wengine: StatsBase = new WEngine()
+    skillSet: SkillSet = {}
+    wengine: WEngine = new WEngine()
     discSet: DiscSet = new DiscSet()
 
     public setCharBase(char_base: StatsBase) {
         this.char_base = char_base
     }
 
-    public setWengine(wengine: StatsBase) {
+    public setWengine(wengine: WEngine) {
         this.wengine = wengine
     }
 

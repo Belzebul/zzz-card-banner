@@ -4,6 +4,7 @@ export interface HoyolabData {
 
 }
 export interface Avatar {
+    rank: number
     id: number
     level: number
     name_mi18n: string
@@ -32,6 +33,7 @@ export interface Weapon {
 }
 export interface Skill {
     level: number
+    skill_type: number
 }
 export interface Suit {
     suit_id: number

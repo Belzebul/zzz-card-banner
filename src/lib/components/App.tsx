@@ -5,7 +5,6 @@ import React from 'react';
 import hoyodata from '../../data/hoyolab_character.json';
 import { CharacterID } from '../constants';
 import { ServiceHoyolab } from '../importer/hoyolab_parser';
-import { viewStats } from '../models/StatsBase';
 import { CharProfile } from './charProfilePrevile/CharProfile';
 import { CharStatSummary } from './charStatPreview/CharStatsSummary';
 import { DiscSetPreview } from './discSetPreview/DiscSetPreview';
@@ -13,11 +12,9 @@ import { DiscSetPreview } from './discSetPreview/DiscSetPreview';
 
 const ExternalLayout: React.FC = () => {
     const serviceHoyoLab = new ServiceHoyolab(hoyodata)
-    const char = serviceHoyoLab.buildCharacter(CharacterID.JANE)
+    const char = serviceHoyoLab.buildCharacter(CharacterID.GRACE)
     char.calc_all()
     const discSet = char.discSet
-    const total_stats = viewStats(char)
-    const wengine_stats = viewStats(char.wengine)
 
     return (
         <Layout style={{ minHeight: '100%' }}>
@@ -42,7 +39,6 @@ const ExternalLayout: React.FC = () => {
                     marginRight: 'auto',
                     overflow: 'initial',
                     display: 'flex',
-                    justifyContent: 'space-around',
                     width: '100%',
                 }}>
                 <Flex gap={8}>
@@ -50,7 +46,7 @@ const ExternalLayout: React.FC = () => {
                         {CharProfile(char)}
                     </Flex>
                     <Flex align='stretch' vertical>
-                        {CharStatSummary(wengine_stats, total_stats)}
+                        {CharStatSummary(char)}
                     </Flex>
                     <Flex align='stretch' vertical>
                         {DiscSetPreview(discSet)}
@@ -61,19 +57,26 @@ const ExternalLayout: React.FC = () => {
     )
 }
 
-
 const App: React.FC = () => (
     <ConfigProvider
         theme={{
+
             "token": {
-                "fontSize": 15,
-                "sizeStep": 5,
-                "borderRadius": 6,
+                "borderRadius": 7,
                 "wireframe": false,
-                "colorPrimary": "#d20777",
-                "colorInfo": "#d20777"
+                "colorPrimary": "#d6015a",
+                "colorInfo": "#d6015a"
+            },
+            "components": {
+                "Layout": {
+                    "headerBg": "rgb(41,0,19)"
+                },
+                "Menu": {
+                    "algorithm": true
+                }
             },
             "algorithm": theme.darkAlgorithm
+
         }}
     >
         <StyleProvider hashPriority="low">

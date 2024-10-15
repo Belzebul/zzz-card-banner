@@ -18,7 +18,6 @@ export class Utils {
         AttributeID.IMPACT,
         AttributeID.DEF_BASE,
         AttributeID.DEF_FLAT,
-        AttributeID.PEN_BASE,
         AttributeID.PEN_FLAT,
         AttributeID.ENERGY_RATE,
         AttributeID.ANOMALY_PROF_BASE,

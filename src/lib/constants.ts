@@ -25,8 +25,6 @@ export const CHAR_LIST_CODES = [
     "Ellen",
 ]
 
-
-
 export const CharacterID = {
     CORIN: "1061",
     QINGYI: "1251",
@@ -154,6 +152,39 @@ export const StatsToReadableShort = {
     [AttributeID.ETHER_DMG]: "Ether"
 }
 
+
+export const StatsToReadableMin = {
+    [AttributeID.HP_BASE]: "HP",
+    [AttributeID.HP_P]: "HP %",
+    [AttributeID.HP_FLAT]: "HP",
+    [AttributeID.ATK_BASE]: "ATK",
+    [AttributeID.ATK_P]: "ATK %",
+    [AttributeID.ATK_FLAT]: "ATK",
+    [AttributeID.IMPACT]: "IMP",
+    [AttributeID.IMPACT_P]: "IMP %",
+    [AttributeID.DEF_BASE]: "DEF",
+    [AttributeID.DEF_P]: "DEF %",
+    [AttributeID.DEF_FLAT]: "DEF",
+    [AttributeID.CRIT_RATE_BASE]: "CRIT",
+    [AttributeID.CRIT_RATE]: "CRIT",
+    [AttributeID.CRIT_DMG_BASE]: "CDMG",
+    [AttributeID.CRIT_DMG]: "CDMG",
+    [AttributeID.PEN_BASE]: "PEN",
+    [AttributeID.PEN_P]: "PEN %",
+    [AttributeID.PEN_FLAT]: "PEN",
+    [AttributeID.ENERGY_RATE]: "ER",
+    [AttributeID.ENERGY_P]: "ER %",
+    [AttributeID.ANOMALY_PROF_BASE]: "AP",
+    [AttributeID.ANOMALY_PROF]: "AP",
+    [AttributeID.ANOMALY_MAST_BASE]: "AM",
+    [AttributeID.ANOMALY_MAST]: "AM %",
+    [AttributeID.PHYS_DMG]: "PHYS",
+    [AttributeID.FIRE_DMG]: "FIRE",
+    [AttributeID.ICE_DMG]: "ICE",
+    [AttributeID.ELEC_DMG]: "ELEC",
+    [AttributeID.ETHER_DMG]: "ETHER"
+}
+
 export const WeaponTypeID = {
     ATTACK: 1,
     STUN: 2,
@@ -186,5 +217,13 @@ export const CampID = {
     NEPS: 7,
 }
 
+export const SkillID = {
+    BASIC: 0,
+    SPECIAL: 1,
+    DODGE: 2,
+    CHAIN: 3,
+    CORE: 5,
+    ASSIST: 6,
+}
 
-
+export type SkillIDKey = keyof typeof SkillID

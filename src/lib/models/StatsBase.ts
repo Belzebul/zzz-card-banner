@@ -26,12 +26,12 @@ function findKeyByValue(object: { [id: number]: StatsBaseKeys }, value: string) 
 }
 
 export class StatsBase {
-    hp_perc: number = 0.0
     hp: number = 0.0
-    atk_perc: number = 0.0
+    hp_perc: number = 0.0
     atk: number = 0.0
-    def_perc: number = 0.0
+    atk_perc: number = 0.0
     defense: number = 0.0
+    def_perc: number = 0.0
     impact: number = 0.0
     impact_perc: number = 0.0
     crit_rate: number = 0.0

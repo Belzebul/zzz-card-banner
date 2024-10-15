@@ -1,12 +1,12 @@
 import { Card, Divider, Flex } from "antd"
 import React from "react"
 import { Assets } from "../../assets"
-import { StatsToReadableShort } from "../../constants"
+import { StatsToReadableMin } from "../../constants"
 import { Disc, Stat } from "../../models/Disc"
 import { Utils } from "../../Utils"
 import RelicStatText from "./DiscStatText"
 
-export const iconSize = 18
+export const iconSize = 14
 
 export const DiscStatBGImg = (disc: Disc, id: number) => {
     const url = Assets.getDiscSetById(String(disc.equipset_id))
@@ -36,7 +36,7 @@ const DiscCard = (disc: Disc, id: number) => (
             <Flex justify='space-between' align="center">
                 <img src={Assets.getRarity(disc.rarity)} style={{ width: 34, height: "auto" }} />
                 <Flex align="center" vertical>
-                    <RelicStatText style={{ fontSize: "17px" }}>+{disc.lvl}</RelicStatText>
+                    <RelicStatText style={{ fontSize: "17px" }}>Lv.{disc.lvl}</RelicStatText>
                 </Flex>
             </Flex>
             <Divider style={{ margin: '10px auto', flexGrow: 1 }} />
@@ -53,9 +53,9 @@ const DiscCard = (disc: Disc, id: number) => (
 const DiscStats = (stat: Stat, index: number) => {
     return (
         <Flex key={index} justify='space-between'>
-            <img src={Assets.getStatIcon(stat)} style={{ width: iconSize, height: iconSize, marginRight: 3, verticalAlign: "center" }} />
+            <img src={Assets.getStatIcon(stat)} style={{ width: iconSize, height: iconSize, margin: "4px" }} />
             <RelicStatText>
-                {StatsToReadableShort[stat.id]}
+                {StatsToReadableMin[stat.id]}
             </RelicStatText>
             <Divider style={{ margin: 'auto 10px', flexGrow: 1, width: 'unset', minWidth: 'unset' }} dashed />
             <RelicStatText>

@@ -1,10 +1,11 @@
-import { Card, Flex, Typography } from "antd"
+import { Card, Flex } from "antd"
 import Meta from "antd/es/card/Meta"
 import { Assets } from "../../assets"
 import { CharMetadata } from "../../models/CharMetadata"
 import { Character } from "../../models/Character"
-
-const { Text } = Typography
+import { CharSkillSetPreview } from "./CharSkills"
+import { CinemaPreview } from "./CinemaSvg"
+import { CharLvlText, CharNameText } from "./TextCharProfile"
 
 export const CharProfile = (char: Character) => {
     const charMetadata = char.charMetadata
@@ -12,37 +13,44 @@ export const CharProfile = (char: Character) => {
     const rarity = Assets.getRarity(charMetadata.rarity);
     const weapon = Assets.getWeapon(charMetadata.weapon);
     const element = Assets.getElement(charMetadata.elementId);
-    const camp = Assets.getCamp(charMetadata.camp);
-    console.log(charMetadata.camp)
+    const shadow = "drop-shadow(0px 0px 4px rgb(0 0 0 / 0.4)";
+
     return (
         <div style={{ overflow: "hidden", width: 420, height: 750, borderRadius: 10 }} >
             <div style={{ position: "relative", zIndex: 2 }}>
-                <img src={camp} style={{
-                    width: 400,
-                    height: "auto",
-                    position: "absolute",
-                    margin: "-20% 30%",
-                    zIndex: 1,
-                    opacity: 0.10
-                }} />
-                <Card hoverable style={{ width: 412, height: 750, margin: 'auto 8px' }}>
+                <Flex justify="center">
+                    <img alt={charMetadata.name} src={profile} style={{
+                        width: "auto",
+                        height: 800,
+                        top: "-2%",
+                        left: "-5%",
+                        position: "absolute",
+                        opacity: 0.60,
+                        zIndex: 2
+                    }} />
+                </Flex>
+                <Card hoverable style={{ width: 420, height: 750 }}>
 
                     <Flex justify="center" vertical style={{ zIndex: 3, position: "relative" }}>
-                        <Flex justify='flex-start' gap='small'>
+                        <Flex justify='flex-start' gap='middle' style={{ float: "right" }}>
                             <img src={rarity} height="72px" />
-                            <Text style={{ fontSize: "38px", fontFamily: 'paybooc_bold' }}> {charMetadata.name} </Text>
-                            <Flex justify="flex-end"><Text style={{ fontSize: "38px", fontFamily: 'paybooc_bold' }}> {char.lvl} </Text></Flex>
+                            <Flex justify="flex-end" gap='small'>
+                                <CharNameText> {charMetadata.name} </CharNameText>
+                                <CharLvlText> Lv.{char.lvl} </CharLvlText>
+                            </Flex>
                         </Flex>
-                        <Flex justify="center">
-                            <img alt={charMetadata.name} src={profile} width="300" />
-                        </Flex>
-                        <Flex justify='flex-end' align="flex-end" gap='small'>
-                            <img src={weapon} height="32px" />
-                            <img src={element} height="48px" />
-                        </Flex>
+
                     </Flex>
-
-
+                    <Flex justify='end' align="flex-end" gap='small' style={{ position: "absolute", bottom: 28, left: 28, width: 42, height: 328, zIndex: 3 }} vertical>
+                        {CinemaPreview(char.rank)}
+                    </Flex>
+                    <Flex justify='flex-end' gap={8} style={{ position: "absolute", bottom: 90, right: 30, width: 40, zIndex: 3, textShadow: `${shadow}` }} vertical>
+                        {CharSkillSetPreview(char.skillSet)}
+                    </Flex>
+                    <Flex justify='flex-end' gap={8} align="flex-end" style={{ position: "absolute", bottom: 28, right: 28, height: 44, zIndex: 3, textShadow: `${shadow}` }} >
+                        <img src={weapon} height="32px" style={{ filter: `drop-shadow(0px 0px 15px #AAA)` }} />
+                        <img src={element} height="44px" style={{ filter: `drop-shadow(0px 0px 15px #AAA)` }} />
+                    </Flex>
                 </Card>
             </div>
         </div >

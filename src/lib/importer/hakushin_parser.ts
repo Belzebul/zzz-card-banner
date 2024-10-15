@@ -1,6 +1,8 @@
-import game_data from "../../data/hakushin_characters.json"
+import game_data from "../../data/base_data_characters.json"
+import { SkillID } from "../constants"
 import { Character } from "../models/Character"
 import { CharMetadata } from "../models/CharMetadata"
+import { SkillSet } from "../models/SkillSet"
 import { HOYO_MAP, StatsBase } from "../models/StatsBase"
 import { Avatar, Hakushin_data } from "../types/hakushin_types"
 import { Utils } from "../Utils"
@@ -9,23 +11,12 @@ import { Utils } from "../Utils"
 export class CharacterBuilder {
     character: Character
     lvl: number
-    basic_lvl: number
-    dodge_lvl: number
-    assist_lvl: number
-    special_lvl: number
-    chain_lvl: number
-    core_lvl: number
     char_raw: Avatar
 
-    constructor(name: string, lvl: number, basic_lvl: number, special_lvl: number, dodge_lvl: number, chain_lvl: number, core_lvl: number, assist_lvl: number) {
+    constructor(name: string, lvl: number, skillSet: SkillSet) {
         this.lvl = lvl;
-        this.basic_lvl = basic_lvl;
-        this.dodge_lvl = dodge_lvl;
-        this.assist_lvl = assist_lvl;
-        this.special_lvl = special_lvl;
-        this.chain_lvl = chain_lvl;
-        this.core_lvl = core_lvl;
         this.character = new Character();
+        this.character.skillSet = skillSet
         this.char_raw = new ServiceHakushin().char_base[name];
     }
 
@@ -70,8 +61,10 @@ export class CharacterBuilder {
     }
 
     private set_core_stats_base() {
-        if (this.lvl == 0) return;
-        const core_stats = this.char_raw.ExtraLevel[this.core_lvl - 1].Extra;
+        const core_lvl = this.character.skillSet[SkillID.CORE].level;
+
+        if (core_lvl == 1) return;
+        const core_stats = this.char_raw.ExtraLevel[core_lvl - 1].Extra;
 
         for (const stat in core_stats) {
             let value: number = core_stats[stat].Value;
