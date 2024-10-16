@@ -34,7 +34,7 @@ export class Assets {
 
     public static getRarity(id: string) {
         if (!id) return Assets.getBlank();
-        return Assets.getImageUrl(`/icon/rarity/rarity${id}.png`)
+        return Assets.getImageUrl(`/icon/rarity/rarity${id}.webp`)
     }
 
     static getWeapon(id: string) {

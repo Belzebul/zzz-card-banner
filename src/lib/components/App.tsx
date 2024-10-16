@@ -5,42 +5,23 @@ import React from 'react';
 import hoyodata from '../../data/hoyolab_character.json';
 import { CharacterID } from '../constants';
 import { ServiceHoyolab } from '../importer/hoyolab_parser';
+import './App.css';
 import { CharProfile } from './charProfilePrevile/CharProfile';
 import { CharStatSummary } from './charStatPreview/CharStatsSummary';
 import { DiscSetPreview } from './discSetPreview/DiscSetPreview';
 
 
 const ExternalLayout: React.FC = () => {
-    const serviceHoyoLab = new ServiceHoyolab(hoyodata)
-    const char = serviceHoyoLab.buildCharacter(CharacterID.GRACE)
-    char.calc_all()
-    const discSet = char.discSet
+    const serviceHoyoLab = new ServiceHoyolab(hoyodata);
+    const char = serviceHoyoLab.buildCharacter(CharacterID.GRACE);
+    char.calc_all();
+    const discSet = char.discSet;
 
     return (
         <Layout style={{ minHeight: '100%' }}>
-            <Header
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    paddingLeft: '30px',
-                    paddingRight: '0px',
-                    height: 48,
-                    width: '100%',
-                    backgroundImage: 'linear-gradient(rgb(0 0 0/60%) 0 0)',
-                }}
-            />
+            <Header className='header' />
             <Layout hasSider />
-            <Content
-                style={{
-                    padding: 10,
-                    margin: 0,
-                    minHeight: 280,
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    overflow: 'initial',
-                    display: 'flex',
-                    width: '100%',
-                }}>
+            <Content className='content'>
                 <Flex gap={8}>
                     <Flex align='stretch' vertical>
                         {CharProfile(char)}
@@ -60,7 +41,6 @@ const ExternalLayout: React.FC = () => {
 const App: React.FC = () => (
     <ConfigProvider
         theme={{
-
             "token": {
                 "borderRadius": 7,
                 "wireframe": false,

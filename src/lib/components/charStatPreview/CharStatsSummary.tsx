@@ -28,11 +28,11 @@ export const CharStatSummary = (char: Character) => {
             <Flex justify="space-between" style={{ width: 275, padding: 10 }}>
                 <div style={{ position: "relative", width: 72, height: 72 }}>
                     <img src={wengine_rarity} style={{
-                        width: 36,
+                        width: 28,
                         height: "auto",
                         position: "absolute",
-                        bottom: -10,
-                        right: -10
+                        bottom: -6,
+                        right: -6
                     }} />
                     <img src={wengine_icon} height="72px" />
                 </div>
