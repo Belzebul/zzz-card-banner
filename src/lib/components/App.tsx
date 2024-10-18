@@ -1,5 +1,6 @@
 import { toPng } from "html-to-image";
 import React, { useRef, useState } from "react";
+import { Assets } from "../assets";
 import { ServiceHoyolab } from "../importer/hoyolab_parser";
 import { HoyolabData } from "../types/hoyolab_types";
 import { CharProfile } from "./charProfilePreview/CharProfile";
@@ -85,7 +86,7 @@ export const ExternalLayout: React.FC = () => {
                 </span>
                 <div className="flex flex-row gap-2">
                     <label className="flex justify-center my-4 ">
-                        <input type="file" hidden onChange={handleFileChange} accept="application/json" className="block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 text-[22px] font-['paybooc'] opacity-70" title="json load" />
+                        <input type="file" onChange={handleFileChange} accept="application/json" className="block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 text-[22px] font-['paybooc'] opacity-70" title="json load" />
                     </label>
                     <div className="flex group w-auto items-center z-30 my-4">
                         <button type="button" onClick={png_download} className="py-1 px-2 text-sm text-stone-900 border border-stone-300 rounded-lg cursor-pointer bg-stone-50 dark:text-stone-400 focus:outline-none dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 font-['paybooc'] opacity-90">Download
@@ -111,6 +112,10 @@ export const ExternalLayout: React.FC = () => {
                     <div className="flex flex-col">{DiscSetPreview(discSet)}</div>
                 </div>
             </div>
-        </div >
+            <div className="flex flex-col items-center justify-center">
+                <span className="text-4xl my-8">Instructions</span>
+                <img className="my-8" src={Assets.getTutorial()} />
+            </div>
+        </div>
     );
 };
