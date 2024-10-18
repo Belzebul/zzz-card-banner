@@ -1,22 +1,21 @@
-import { Flex } from "antd";
 import { circle, MOVIE_MAPPING } from "../constantsUI";
 
 export const CinemaPreview = (charMovie: number) => {
     return (
-        <Flex vertical gap="middle">
-            {Object.entries(MOVIE_MAPPING).map(([id, value]) =>
-                MoviePreview(id, value, charMovie)
+        <>
+            {Object.entries(MOVIE_MAPPING).map(([id, value], index_jsx) =>
+                MoviePreview(id, value, charMovie, index_jsx)
             )}
-        </Flex>
+        </>
     )
 }
 
-const MoviePreview = (key: string, value: string, charMovie: number) => {
+const MoviePreview = (key: string, value: string, charMovie: number, index_jsx: number) => {
     const color = getMovieColor(+key, charMovie);
     const shadow = "drop-shadow(0px 0px 6px rgb(0 0 0 / 0.7)";
     return (
         <>
-            <svg viewBox="0 0 80 80" style={{ width: "42px", height: "42px", color: `${color}`, filter: `${shadow}` }}>
+            <svg key={index_jsx} viewBox="0 0 80 80" style={{ width: "42px", height: "42px", color: `${color}`, filter: `${shadow}` }}>
                 <path fill="currentColor" d={value} />
                 <path fill="currentColor" d={circle} />
             </svg>

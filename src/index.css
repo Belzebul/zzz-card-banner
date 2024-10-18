@@ -1,21 +1,32 @@
-@font-face {
-  font-family: 'zzz_font';
-  src: local('Mont Heavy'), url(./fonts/ZZZ_FR.ttf) format('truetype');
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@font-face {
-  font-family: 'paybooc_bold';
-  src: url(./fonts/paybooc-Bold.woff);
-  font-weight: bold;
+@layer base {
+  @font-face {
+    font-family: 'zzz';
+    font-stretch: 90%;
+    white-space: nowrap;
+    src: local('Mont Heavy'), url(./fonts/ZZZ_FR.ttf) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'paybooc';
+    font-weight: 400;
+    white-space: nowrap;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px #000000;
+    src: url(./fonts/paybooc-Bold.woff);
+  }
 }
 
 :root {
-  font-family: "zzz_font", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: "paybooc", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.85);
   background-color: #242424;
 
   font-synthesis: none;

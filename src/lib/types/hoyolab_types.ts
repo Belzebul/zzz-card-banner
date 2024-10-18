@@ -1,8 +1,12 @@
 
 export interface HoyolabData {
-    [id: string]: Avatar[]
-
+    data:Data
 }
+
+export interface Data{
+    avatar_list: Avatar[]
+}
+
 export interface Avatar {
     rank: number
     id: number

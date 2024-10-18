@@ -1,5 +1,5 @@
 import { ICON_FROM_CAMP_MAPPING, ICON_FROM_ELEMENT_MAPPING, ICON_FROM_SKILL_MAPPING, ICON_FROM_STAT_MAPPING, ICON_FROM_WEAPON_MAPPING as ICON_FROM_WEAPONTYPE_MAPPING } from "./components/constantsUI";
-import { Stat } from "./models/Disc";
+import { Stat } from "./models/DiscSet";
 
 import discset_data from "../data/base_discset_data.json";
 import wengine_data from "../data/base_wengine_data.json";
@@ -26,7 +26,7 @@ export class Assets {
     }
 
     public static getDiscSetById(id: string) {
-        if (!id) return Assets.getBlank();
+        if (id === '0') return Assets.getBlank();
 
         const discs_meta: DataDiscSetsMeta = discset_data
         return Assets.getImageUrl(`/icon/disc/${discs_meta[+id]['icon']}`)
@@ -48,6 +48,7 @@ export class Assets {
     }
 
     static getCamp(camp: string) {
+        if (!camp) return Assets.getBlank();
         return Assets.getImageUrl(`/icon/camp/${ICON_FROM_CAMP_MAPPING[+camp]}`);
     }
 

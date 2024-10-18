@@ -1,4 +1,3 @@
-
 export const CHAR_LIST_CODES = [
     "Corin",
     "QingYi",
@@ -103,21 +102,21 @@ export const DiscSetID = {
     FANGED_METAL: 32600
 }
 
-export const HOYO_2P_DISCSET = {
-    [DiscSetID.WOODPECKER_ELECTRO]: { [AttributeID.CRIT_RATE]: 8.0 },
-    [DiscSetID.PUFFER_ELECTRO]: { [AttributeID.PEN_P]: 8.0 },
-    [DiscSetID.SHOCKSTAR]: { [AttributeID.IMPACT_P]: 6.0 },
-    [DiscSetID.FREEDOM_BLUE]: { [AttributeID.ANOMALY_PROF]: 30.0 },
-    [DiscSetID.HORMONE_PUNK]: { [AttributeID.ATK_P]: 10.0 },
-    [DiscSetID.SOUL_ROCK]: { [AttributeID.DEF_P]: 16.0 },
-    [DiscSetID.SWING_JAZZ]: { [AttributeID.ENERGY_P]: 20.0 },
-    [DiscSetID.CHAOS_JAZZ]: { [AttributeID.ANOMALY_PROF]: 30.0 },
-    [DiscSetID.PROTO_PUNK]: { [AttributeID.SHIELD_EFFECT]: 15.0 },
-    [DiscSetID.INFERNAL_METAL]: { [AttributeID.FIRE_DMG]: 10.0 },
-    [DiscSetID.CHAOTIC_METAL]: { [AttributeID.ETHER_DMG]: 10.0 },
-    [DiscSetID.POLAR_METAL]: { [AttributeID.ICE_DMG]: 10.0 },
-    [DiscSetID.THUNDER_METAL]: { [AttributeID.ELEC_DMG]: 10.0 },
-    [DiscSetID.FANGED_METAL]: { [AttributeID.PHYS_DMG]: 10.0 },
+export const HOYO_2P_DISCSET: { [id: number]: number[] } = {
+    [DiscSetID.WOODPECKER_ELECTRO]: [AttributeID.CRIT_RATE, 8.0],
+    [DiscSetID.PUFFER_ELECTRO]: [AttributeID.PEN_P, 8.0],
+    [DiscSetID.SHOCKSTAR]: [AttributeID.IMPACT_P, 6.0],
+    [DiscSetID.FREEDOM_BLUE]: [AttributeID.ANOMALY_PROF, 30.0],
+    [DiscSetID.HORMONE_PUNK]: [AttributeID.ATK_P, 10.0],
+    [DiscSetID.SOUL_ROCK]: [AttributeID.DEF_P, 16.0],
+    [DiscSetID.SWING_JAZZ]: [AttributeID.ENERGY_P, 20.0],
+    [DiscSetID.CHAOS_JAZZ]: [AttributeID.ANOMALY_PROF, 30.0],
+    [DiscSetID.PROTO_PUNK]: [AttributeID.SHIELD_EFFECT, 15.0],
+    [DiscSetID.INFERNAL_METAL]: [AttributeID.FIRE_DMG, 10.0],
+    [DiscSetID.CHAOTIC_METAL]: [AttributeID.ETHER_DMG, 10.0],
+    [DiscSetID.POLAR_METAL]: [AttributeID.ICE_DMG, 10.0],
+    [DiscSetID.THUNDER_METAL]: [AttributeID.ELEC_DMG, 10.0],
+    [DiscSetID.FANGED_METAL]: [AttributeID.PHYS_DMG, 10.0],
 }
 
 export const StatsToReadableShort = {

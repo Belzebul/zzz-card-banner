@@ -1,5 +1,5 @@
 import { Character } from '../models/Character'
-import { Disc, DiscSet, Stat } from '../models/Disc'
+import { Disc, DiscSet, Stat } from '../models/DiscSet'
 import { SkillSet } from '../models/SkillSet'
 import { HOYO_MAP } from '../models/StatsBase'
 import { WEngine } from '../models/WEngine'
@@ -9,21 +9,24 @@ import { CharacterBuilder } from './hakushin_parser'
 
 
 export class ServiceHoyolab {
-    json_hoyo: HoyolabData
-    constructor(json: HoyolabData) {
-        this.json_hoyo = json
+    json_hoyo: HoyolabData | undefined
+    constructor(json: HoyolabData | undefined) {
+        this.json_hoyo = json;
     }
 
-    public buildCharacter(char_name: string) {
-        const avatar: Avatar = this.json_hoyo[char_name][0]
-        const serviceWengide = new ServiceWengine(avatar.weapon)
-        const servicoDiscset: ServiceDiscset = new ServiceDiscset(avatar.equip)
+    public buildCharacter() {
+        if (this.json_hoyo === undefined)
+            return new Character();
 
-        const character: Character = this.getCharacterBaseData(avatar)
-        character.setWengine(serviceWengide.load_engine())
-        character.setDiscSet(servicoDiscset.buildDiscSet())
-        character.rank = avatar.rank
-        return character
+        const avatar: Avatar = this.json_hoyo.data.avatar_list[0];
+        const serviceWengide = new ServiceWengine(avatar.weapon);
+        const servicoDiscset: ServiceDiscset = new ServiceDiscset(avatar.equip);
+
+        const character: Character = this.getCharacterBaseData(avatar);
+        character.setWengine(serviceWengide.load_engine());
+        character.setDiscSet(servicoDiscset.buildDiscSet());
+        character.rank = avatar.rank;
+        return character;
     }
 
     private getCharacterBaseData(avatar: Avatar) {
@@ -72,24 +75,24 @@ export class ServiceWengine {
 }
 
 export class ServiceDiscset {
-    json_equip: Equip[] | undefined
+    json_equip: Equip[] | undefined;
 
     constructor(json: Equip[] | undefined) {
-        this.json_equip = json
+        this.json_equip = json;
     }
 
     public buildDiscSet() {
         if (this.json_equip === undefined)
             return new DiscSet();
 
-        const discSet: DiscSet = new DiscSet()
-        const equips: Equip[] = this.json_equip
-        const discs: Disc[] = []
+        const discSet: DiscSet = new DiscSet();
+        const equips: Equip[] = this.json_equip;
+        const discs: Map<number,Disc> = new Map();
 
         for (const equip of equips) {
-            const suit: Suit = equip.equip_suit
-            discSet.disc_sets_bonus[suit.suit_id] = suit.own
-            discs.push(this.buildDisc(equip))
+            const suit: Suit = equip.equip_suit;
+            discSet.disc_sets_bonus[suit.suit_id] = suit.own;
+            discs.set(equip.equipment_type,this.buildDisc(equip));
         }
         discSet.discs = discs
         return discSet

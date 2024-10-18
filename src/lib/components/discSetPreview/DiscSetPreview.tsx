@@ -1,14 +1,15 @@
-import { Flex } from "antd";
-import { DiscSet } from "../../models/Disc";
+import { DiscSet } from "../../models/DiscSet";
 import { DiscStatBGImg } from "./DiscStatCard";
 
 export const DiscSetPreview = (discSet: DiscSet) => {
     return (
-        <Flex gap={8} wrap style={{ overflow: "hidden", width: 450 }}>
-
-            {discSet.discs.map((disc, key) => (
-                DiscStatBGImg(disc, key)
-            ))}
-        </Flex>
+        <div className="flex w-[430px] gap-2 flex-wrap">
+            {DiscStatBGImg(discSet.discs.get(1))}
+            {DiscStatBGImg(discSet.discs.get(6))}
+            {DiscStatBGImg(discSet.discs.get(2))}
+            {DiscStatBGImg(discSet.discs.get(5))}
+            {DiscStatBGImg(discSet.discs.get(3))}
+            {DiscStatBGImg(discSet.discs.get(4))}
+        </div>
     )
 }

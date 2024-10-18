@@ -1,5 +1,5 @@
 import { CharMetadata } from "./CharMetadata";
-import { DiscSet } from "./Disc";
+import { DiscSet } from "./DiscSet";
 import { SkillSet } from "./SkillSet";
 import { StatsBase } from "./StatsBase";
 import { WEngine } from "./WEngine";

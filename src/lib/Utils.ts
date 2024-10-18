@@ -1,5 +1,5 @@
 import { AttributeID } from "./constants"
-import { Stat } from "./models/Disc"
+import { Stat } from "./models/DiscSet"
 
 export class Utils {
 

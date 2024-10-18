@@ -1,66 +1,65 @@
-import { Card, Divider, Flex } from "antd"
-import React from "react"
 import { Assets } from "../../assets"
 import { StatsToReadableMin } from "../../constants"
-import { Disc, Stat } from "../../models/Disc"
+import { Disc, Stat } from "../../models/DiscSet"
 import { Utils } from "../../Utils"
-import RelicStatText from "./DiscStatText"
 
 export const iconSize = 14
 
-export const DiscStatBGImg = (disc: Disc, id: number) => {
+export const DiscStatBGImg = (disc: Disc | undefined) => {
+    if (!disc)
+        disc = new Disc();
+
     const url = Assets.getDiscSetById(String(disc.equipset_id))
 
     return (
-        <React.Fragment key={id}>
-            <div style={{ overflow: "hidden", width: 210, height: 245, borderRadius: 10 }} >
-                <div style={{ position: "relative", zIndex: 2 }}>
-                    <img src={url} style={{
-                        width: 180,
-                        height: "auto",
-                        position: "absolute",
-                        margin: "-60px 82px",
-                        zIndex: 1,
-                        opacity: 0.35
-                    }} />
-                    {DiscCard(disc, id)}
-                </div>
+        <div className="overflow-hidden w-[210px] h-[245] rounded-xl" >
+            <div className="relative z-20 ">
+                <img src={url} className="absolute w-[180px] h-auto -top-10 -right-10 z-10 opacity-35 blur-[2px]" />
+                {DiscCard(disc)}
             </div>
-        </React.Fragment >
+        </div >
     )
 }
 
-const DiscCard = (disc: Disc, id: number) => (
-    <Card key={id} bordered={true} hoverable style={{ height: 245, position: "relative" }}>
-        <div style={{ position: "absolute", zIndex: 3, width: 150 }}>
-            <Flex justify='space-between' align="center">
-                <img src={Assets.getRarity(disc.rarity)} style={{ width: 34, height: "auto" }} />
-                <Flex align="center" vertical>
-                    <RelicStatText style={{ fontSize: "17px" }}>Lv.{disc.lvl}</RelicStatText>
-                </Flex>
-            </Flex>
-            <Divider style={{ margin: '10px auto', flexGrow: 1 }} />
-            {DiscStats(disc.main_stats, id)}
-            <Divider style={{ margin: '10px auto', flexGrow: 1 }} />
-            {disc.substats.map((stat, i) => (
-                DiscStats(stat, i)
-            ))}
-        </div>
-    </Card>
-);
+const DiscCard = (disc: Disc) => {
+    if (disc.lvl === 0)
+        return (
+            <div className="relative w-[210px] h-[245px] border border-solid rounded-xl border-stone-700 bg-stone-800 transition-all duration-500 hover:border-opacity-15 bg-opacity-60 border-opacity-50 shadow-xl" />
+        );
 
-
-const DiscStats = (stat: Stat, index: number) => {
     return (
-        <Flex key={index} justify='space-between'>
+        <div className="relative w-[210px] h-[245px] border border-solid rounded-xl border-stone-700 bg-stone-800 transition-all duration-500 hover:border-opacity-15 bg-opacity-60 border-opacity-50 shadow-xl">
+            <div className="absolute z-30 w-[154px] m-7">
+                <div className="flex justify-between self-center">
+                    <img src={Assets.getRarity(disc.rarity)} style={{ width: 34, height: "auto" }} />
+                    <div className="flex flex-col self-center">
+                        <span className="font-['zzz'] text-[17px]">Lv.{disc.lvl}</span>
+                    </div>
+                </div>
+                <div className="flex border-[0.75px] border-solid box-border divide-solid clear-both opacity-15 my-[10px] mx-auto" />
+                {DiscStats(disc.main_stats)}
+                <div className="flex border-[0.75px] border-solid box-border divide-solid clear-both opacity-15 my-[10px] mx-auto" />
+                {disc.substats.map((stat) => (
+                    DiscStats(stat)
+                ))}
+
+            </div>
+        </div>
+    )
+};
+
+
+const DiscStats = (stat: Stat) => {
+    return (
+        <div className="flex justify-between" >
             <img src={Assets.getStatIcon(stat)} style={{ width: iconSize, height: iconSize, margin: "4px" }} />
-            <RelicStatText>
+            <span className="font-['zzz']">
                 {StatsToReadableMin[stat.id]}
-            </RelicStatText>
-            <Divider style={{ margin: 'auto 10px', flexGrow: 1, width: 'unset', minWidth: 'unset' }} dashed />
-            <RelicStatText>
+            </span >
+            <div className="flex border border-dashed box-border clear-both opacity-15 grow my-auto mx-[10px]" />
+            <span className="font-['zzz']">
                 {Utils.isFlat(stat)}
-            </RelicStatText>
-        </Flex>
+            </span>
+        </div>
     )
 }

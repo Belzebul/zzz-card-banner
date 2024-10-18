@@ -1,12 +1,12 @@
 import { AttributeID } from "../constants";
-import { Stat } from "./Disc";
+import { Stat } from "./DiscSet";
 
 export function viewStats(statsBase: StatsBase) {
     let stats: Stat[] = []
 
     Object.keys(statsBase).forEach((param) => {
         const stat: Stat = new Stat();
-        const id = findKeyByValue(HOYO_MAP, param);
+        const id = findKeyByAttr(HOYO_MAP, param);
         if (id === undefined)
             return;
 
@@ -21,7 +21,7 @@ export function viewStats(statsBase: StatsBase) {
     return stats
 }
 
-function findKeyByValue(object: { [id: number]: StatsBaseKeys }, value: string) {
+function findKeyByAttr(object: { [id: number]: StatsBaseKeys }, value: string) {
     return Object.keys(object).find(key => object[+key] === value);
 }
 
