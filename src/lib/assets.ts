@@ -7,7 +7,7 @@ import { dataDiscSetsMeta as DataDiscSetsMeta } from "./types/discs_metadata";
 import { WengineMetadata } from "./types/wengine_metadata";
 
 export class Assets {
-    private static BASE_PATH = "";
+    private static BASE_PATH = "/zzz-card-banner";
 
     private static getBlank() {
         return Assets.getImageUrl('/misc/blank.webp')

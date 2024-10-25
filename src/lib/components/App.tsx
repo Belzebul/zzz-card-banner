@@ -1,14 +1,15 @@
 import { toPng } from "html-to-image";
 import React, { useRef, useState } from "react";
+import data from "../../data/Jane_data.json";
 import { Assets } from "../assets";
 import { ServiceHoyolab } from "../importer/hoyolab_parser";
 import { HoyolabData } from "../types/hoyolab_types";
-import { CharProfile } from "./charProfilePreview/CharProfile";
-import { CharStatSummary } from "./charStatPreview/CharStatsSummary";
-import { DiscSetPreview } from "./discSetPreview/DiscSetPreview";
+import CharProfile from "./CharTab/charProfilePreview/CharProfile";
+import CharStatSummary from "./CharTab/charStatPreview/CharStatsSummary";
+import DiscSetPreview from "./CharTab/discSetPreview/DiscSetPreview";
 
 export const ExternalLayout: React.FC = () => {
-    const [json, setJson] = useState<HoyolabData | undefined>(undefined);
+    const [json, setJson] = useState<HoyolabData | undefined>(data);
     const [tooltip, setTooptip] = useState("Invalid Card!");
 
     const refToPng = useRef(null);
@@ -105,11 +106,17 @@ export const ExternalLayout: React.FC = () => {
             <div />
             <div className="flex items-center p-[10px] m-0 mx-auto h-min-[100%]">
                 <div ref={refToPng} className="flex gap-2 bg-stone-900 p-2 rounded-2xl">
-                    <div className="flex flex-col">{CharProfile(char)}</div>
+                    <div className="flex flex-col">
+                        <CharProfile char={char} />
+                    </div>
 
-                    <div className="flex flex-col">{CharStatSummary(char)}</div>
+                    <div className="flex flex-col">
+                        <CharStatSummary char={char} />
+                    </div>
 
-                    <div className="flex flex-col">{DiscSetPreview(discSet)}</div>
+                    <div className="flex flex-col">
+                        <DiscSetPreview discSet={discSet} />
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center">

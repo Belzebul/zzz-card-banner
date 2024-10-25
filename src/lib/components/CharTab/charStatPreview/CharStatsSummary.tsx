@@ -1,10 +1,12 @@
-import { Assets } from "../../assets"
-import { Character } from "../../models/Character"
-import { Stat } from "../../models/DiscSet"
-import { viewStats } from "../../models/StatsBase"
+
+import { Assets } from "../../../assets"
+import { Character } from "../../../models/Character"
+import { Stat } from "../../../models/DiscSet"
+import { viewStats } from "../../../models/StatsBase"
 import { StatRow } from "./StatRow"
 
-export const CharStatSummary = (char: Character) => {
+const CharStatSummary = (x: { char: Character }) => {
+    const char = x.char;
     const total_stats = viewStats(char)
     const wengine_stats = viewStats(char.wengine)
     const wengine_icon = Assets.getWEngine(char.wengine.id)
@@ -24,7 +26,7 @@ export const CharStatSummary = (char: Character) => {
                     <img src={wengine_icon} height="72px" />
                 </div>
                 <div className="flex flex-col justify-between gap-[6px] w-[190px]">
-                    {wengine_stats.map((stat: Stat, index) => StatRow(stat, index))}
+                    {wengine_stats.map((stat: Stat, index) => <StatRow stat={stat} index={index} />)}
                     <div className="relative flex left-6 gap-2">
                         <span className="font-['zzz']">{wengine_lvl}</span>
                         <span className="font-['zzz']">{wengine_stars}</span>
@@ -33,9 +35,11 @@ export const CharStatSummary = (char: Character) => {
             </div>
             <div className="w-[275px] p-[10px] self-center">
                 <div className="flex flex-col justify-stretch gap-1">
-                    {total_stats.map((stat: Stat, index) => StatRow(stat, index))}
+                    {total_stats.map((stat: Stat, index) => <StatRow stat={stat} index={index} />)}
                 </div>
             </div>
         </div>
     )
 }
+
+export default CharStatSummary

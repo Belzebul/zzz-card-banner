@@ -1,5 +1,0 @@
-.text-border {
-    -webkit-text-stroke-width: 4px;
-    -webkit-text-stroke-color: #000000CC;
-    paint-order: stroke fill;
-}

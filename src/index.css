@@ -3,34 +3,64 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: 'zzz';
-    font-stretch: 90%;
-    white-space: nowrap;
-    src: local('Mont Heavy'), url(./fonts/ZZZ_FR.ttf) format('truetype');
-  }
+    @font-face {
+        font-family: "zzz";
+        font-stretch: 90%;
+        white-space: nowrap;
+        src:
+            local("Mont Heavy"),
+            url(./fonts/ZZZ_FR.ttf) format("truetype");
+    }
 
-  @font-face {
-    font-family: 'paybooc';
-    font-weight: 400;
-    white-space: nowrap;
-    font-weight: bold;
-    text-shadow: 2px 2px 6px #000000;
-    src: url(./fonts/paybooc-Bold.woff);
-  }
+    @font-face {
+        font-family: "paybooc";
+        font-weight: 400;
+        white-space: nowrap;
+        font-weight: bold;
+        text-shadow: 2px 2px 6px #000000;
+        src: url(./fonts/paybooc-Bold.woff);
+    }
+
+    :root {
+        font-family: "paybooc", Impact, Haettenschweiler, "Arial Narrow Bold",
+            sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+
+        color-scheme: light dark;
+        color: rgba(255, 255, 255, 0.85);
+        background-color: #242424;
+
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        --color-cinema-yellow: #fff000;
+        --color-cinema-gray: #949494;
+    }
 }
 
-:root {
-  font-family: "paybooc", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@layer components {
+    .card-primary {
+        @apply relative overflow-hidden border border-solid rounded-xl border-stone-600 bg-stone-700 transition-all duration-500 hover:border-opacity-15 bg-opacity-60 border-opacity-50 shadow-xl p-7;
+    }
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.85);
-  background-color: #242424;
+    .divider-base {
+        @apply flex box-border clear-both opacity-15;
+    }
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    .divider-disc {
+        @apply border-[0.75px] border-solid divide-solid my-[10px] mx-auto;
+    }
+
+    .divider-text {
+        @apply border border-dashed grow my-auto mx-[10px];
+    }
+
+    .text-border {
+        -webkit-text-stroke-width: 4px;
+        -webkit-text-stroke-color: #000000cc;
+        paint-order: stroke fill;
+    }
 }

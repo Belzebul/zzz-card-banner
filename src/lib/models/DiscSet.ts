@@ -18,16 +18,16 @@ export class Disc {
 
 
 export class DiscSet {
-    discs:Map<number, Disc> = new Map<number, Disc>;
+    discs: Map<number, Disc> = new Map<number, Disc>;
     disc_sets_bonus: { [setid: number]: number } = {};
     statBase: StatsBase = new StatsBase();
 
-    constructor(){
+    constructor() {
         this.emptyDiscSet();
     }
 
-    public emptyDiscSet(){
-        Array(6).map((_,index) => {
+    public emptyDiscSet() {
+        Array(6).map((_, index) => {
             this.discs.set(index, new Disc())
         });
     }
@@ -38,7 +38,7 @@ export class DiscSet {
             this.sumStats(disc);
         }
 
-        Object.entries(this.disc_sets_bonus).map(([disc_id, numSet]) => {
+        Object.entries(this.disc_sets_bonus).forEach(([disc_id, numSet]) => {
             if (numSet >= 2) {
                 const stats_name = HOYO_MAP[HOYO_2P_DISCSET[+disc_id][0]];
                 this.statBase[stats_name] += HOYO_2P_DISCSET[+disc_id][1];
