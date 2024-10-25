@@ -1,15 +1,18 @@
 import { toPng } from "html-to-image";
-import React, { useRef, useState } from "react";
-import data from "../../data/Jane_data.json";
+import React, { useEffect, useRef, useState } from "react";
 import { Assets } from "../assets";
+import DB from "../DB/db";
+import { SaveState } from "../DB/saveState";
 import { ServiceHoyolab } from "../importer/hoyolab_parser";
-import { HoyolabData } from "../types/hoyolab_types";
+import { Character } from "../models/Character";
 import CharProfile from "./CharTab/charProfilePreview/CharProfile";
 import CharStatSummary from "./CharTab/charStatPreview/CharStatsSummary";
 import DiscSetPreview from "./CharTab/discSetPreview/DiscSetPreview";
 
+SaveState.load()
+
 export const ExternalLayout: React.FC = () => {
-    const [json, setJson] = useState<HoyolabData | undefined>(data);
+    const [char, setChar] = useState<Character>(new Character());
     const [tooltip, setTooptip] = useState("Invalid Card!");
 
     const refToPng = useRef(null);
@@ -45,7 +48,7 @@ export const ExternalLayout: React.FC = () => {
         toPng(current, { cacheBust: false })
             .then(async (dataUrl) => {
                 const link = document.createElement("a");
-                link.download = char.charMetadata.name + ".png";
+                link.download = char.name + ".png";
                 link.href = dataUrl;
                 link.click();
             })
@@ -66,17 +69,23 @@ export const ExternalLayout: React.FC = () => {
                     if (target !== null) {
                         const result = target.result as string;
                         const json = JSON.parse(result);
-                        setJson(json);
+                        const charAux = new ServiceHoyolab(json).buildCharacter();
+                        DB.setCharacter(charAux);
+                        setChar(charAux);
+                        SaveState.save();
                     }
                 };
             }
         }
     };
 
-    const serviceHoyoLab = new ServiceHoyolab(json);
-    const char = serviceHoyoLab.buildCharacter();
-    char.calc_all();
-    const discSet = char.discSet;
+    useEffect(() => {
+        const charAux = Object.values(DB.getCharactersById())[0];
+        if (charAux && charAux.name !== char.name) {
+            setChar(charAux);
+        }
+
+    }, [char]);
 
     return (
         <div className="flex flex-col bg-neutral-950 box-border min-h-min min-w-min m-4 rounded-md">
@@ -115,7 +124,7 @@ export const ExternalLayout: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col">
-                        <DiscSetPreview discSet={discSet} />
+                        <DiscSetPreview discSet={char.discSet} />
                     </div>
                 </div>
             </div>

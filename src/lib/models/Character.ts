@@ -5,6 +5,8 @@ import { StatsBase } from "./StatsBase";
 import { WEngine } from "./WEngine";
 
 export class Character extends StatsBase {
+    id: number = 0
+    name: string = ""
     lvl: number = 60
     rank: number = 0
     char_base: StatsBase = new StatsBase()

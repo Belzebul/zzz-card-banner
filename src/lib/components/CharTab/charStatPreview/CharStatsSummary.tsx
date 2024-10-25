@@ -26,7 +26,9 @@ const CharStatSummary = (x: { char: Character }) => {
                     <img src={wengine_icon} height="72px" />
                 </div>
                 <div className="flex flex-col justify-between gap-[6px] w-[190px]">
-                    {wengine_stats.map((stat: Stat, index) => <StatRow stat={stat} index={index} />)}
+                    {wengine_stats.map((stat: Stat, index) =>
+                        <StatRow stat={stat} index={index} />
+                    )}
                     <div className="relative flex left-6 gap-2">
                         <span className="font-['zzz']">{wengine_lvl}</span>
                         <span className="font-['zzz']">{wengine_stars}</span>
@@ -35,7 +37,9 @@ const CharStatSummary = (x: { char: Character }) => {
             </div>
             <div className="w-[275px] p-[10px] self-center">
                 <div className="flex flex-col justify-stretch gap-1">
-                    {total_stats.map((stat: Stat, index) => <StatRow stat={stat} index={index} />)}
+                    {total_stats.map((stat: Stat, index) =>
+                        <StatRow stat={stat} index={index} />
+                    )}
                 </div>
             </div>
         </div>

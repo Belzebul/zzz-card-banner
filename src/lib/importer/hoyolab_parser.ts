@@ -26,12 +26,15 @@ export class ServiceHoyolab {
         character.setWengine(serviceWengide.load_engine());
         character.setDiscSet(servicoDiscset.buildDiscSet());
         character.rank = avatar.rank;
+        character.id = avatar.id;
+        character.name = avatar.name_mi18n;
+        character.calc_all();
         return character;
     }
 
     private getCharacterBaseData(avatar: Avatar) {
-        const name_code = avatar.name_mi18n
-        const lvl = avatar.level
+        const name_code = avatar.name_mi18n;
+        const lvl = avatar.level;
         const skillSet = this.getSkillSet(avatar.skills)
         return new CharacterBuilder(
             name_code,
@@ -87,12 +90,12 @@ export class ServiceDiscset {
 
         const discSet: DiscSet = new DiscSet();
         const equips: Equip[] = this.json_equip;
-        const discs: Map<number,Disc> = new Map();
+        const discs: Record<number, Disc> = {};
 
         for (const equip of equips) {
             const suit: Suit = equip.equip_suit;
             discSet.disc_sets_bonus[suit.suit_id] = suit.own;
-            discs.set(equip.equipment_type,this.buildDisc(equip));
+            discs[equip.equipment_type] = this.buildDisc(equip);
         }
         discSet.discs = discs
         return discSet

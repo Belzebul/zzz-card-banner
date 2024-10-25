@@ -29,7 +29,6 @@ export class CharacterBuilder {
 
     private set_metadata() {
         const charMetadata = new CharMetadata();
-        charMetadata.name = this.char_raw.Name;
         charMetadata.rarity = this.char_raw.Rarity === 3 ? "A" : "S";
         charMetadata.weapon = Object.keys(this.char_raw.WeaponType)[0];
         charMetadata.elementId = Object.keys(this.char_raw.ElementType)[0];

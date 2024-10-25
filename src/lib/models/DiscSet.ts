@@ -18,7 +18,7 @@ export class Disc {
 
 
 export class DiscSet {
-    discs: Map<number, Disc> = new Map<number, Disc>;
+    discs: Record<number, Disc> = {};
     disc_sets_bonus: { [setid: number]: number } = {};
     statBase: StatsBase = new StatsBase();
 
@@ -27,16 +27,14 @@ export class DiscSet {
     }
 
     public emptyDiscSet() {
-        Array(6).map((_, index) => {
-            this.discs.set(index, new Disc())
+        Array(6).forEach((_, index) => {
+            this.discs[index] = new Disc();
         });
     }
 
     public sumDiscs(): StatsBase {
         this.statBase = new StatsBase()
-        for (const disc of this.discs.values()) {
-            this.sumStats(disc);
-        }
+        Object.values(this.discs).forEach((value) => this.sumStats(value));
 
         Object.entries(this.disc_sets_bonus).forEach(([disc_id, numSet]) => {
             if (numSet >= 2) {

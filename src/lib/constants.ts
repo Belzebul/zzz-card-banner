@@ -24,6 +24,32 @@ export const CHAR_LIST_CODES = [
     "Ellen",
 ]
 
+export type CharCode = {
+    "Corin",
+    "QingYi",
+    "Jane",
+    "Soukaku",
+    "Billy",
+    "Grace",
+    "Anby",
+    "Caesar",
+    "Nicole",
+    "Piper",
+    "Nekomata",
+    "Zhu Yuan",
+    "Lycaon",
+    "Lighter",
+    "Anton",
+    "Soldier 11",
+    "Ben",
+    "Rina",
+    "Lucy",
+    "Koleda",
+    "Seth",
+    "Burnice",
+    "Ellen",
+}
+
 export const CharacterID = {
     CORIN: "1061",
     QINGYI: "1251",

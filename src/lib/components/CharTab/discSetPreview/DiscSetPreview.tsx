@@ -8,12 +8,12 @@ const DiscSetPreview = (x: { discSet: DiscSet }) => {
     const discSet = x.discSet;
     return (
         <div className="flex w-[430px] gap-2 flex-wrap">
-            <DiscCard disc={discSet.discs.get(1)} />
-            <DiscCard disc={discSet.discs.get(6)} />
-            <DiscCard disc={discSet.discs.get(2)} />
-            <DiscCard disc={discSet.discs.get(5)} />
-            <DiscCard disc={discSet.discs.get(3)} />
-            <DiscCard disc={discSet.discs.get(4)} />
+            <DiscCard disc={discSet.discs[1]} />
+            <DiscCard disc={discSet.discs[6]} />
+            <DiscCard disc={discSet.discs[2]} />
+            <DiscCard disc={discSet.discs[5]} />
+            <DiscCard disc={discSet.discs[3]} />
+            <DiscCard disc={discSet.discs[4]} />
         </div>
     )
 }

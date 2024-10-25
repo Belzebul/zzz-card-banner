@@ -5,26 +5,27 @@ import { CinemaPreview } from "./CinemaSvg";
 
 const CharProfile = (x: { char: Character }) => {
     const charMeta = x.char.charMetadata;
-    if (!x.char.charMetadata.name) {
+
+    if (!x.char.name) {
         return (<div className="card-primary w-[420px] h-[750px]" />);
     }
 
-    const profile = Assets.getCharacterAvatarById(charMeta.name);
+    const profile = Assets.getCharacterAvatarById(x.char.name);
     const rarity = Assets.getRarity(charMeta.rarity);
     const weapon = Assets.getWeapon(charMeta.weapon);
     const element = Assets.getElement(charMeta.elementId);
 
     return (
         <div className="card-primary w-[420px] h-[750px]">
-            <img alt={charMeta.name} src={profile} className="absolute max-w-none top-0 -left-6 h-[750px] z-10 opacity-75" />
+            <img alt={x.char.name} src={profile} className="absolute max-w-none top-0 -left-6 h-[750px] z-10 opacity-75" />
             <div className="relative w-full h-full">
                 <div className="absolute flex h-18 w-auto gap-3 z-30">
                     <img src={rarity} className="w-16" />
-                    <span className="text-[38px] py-0.5 leading-none drop-shadow-primary"> {charMeta.name} </span>
+                    <span className="text-[38px] py-0.5 leading-none drop-shadow-primary"> {x.char.name} </span>
                     <span className="text-[24px] py-2 drop-shadow-primary"> Lv.{x.char.lvl} </span>
                 </div>
                 <div className="flex flex-col absolute bottom-0 left-0 w-[42px] items-end gap-4 justify-end z-30">
-                    {CinemaPreview(x.char.rank)}
+                    <CinemaPreview charMovie={x.char.rank} />
                 </div>
                 <div className="flex flex-col absolute bottom-14 right-0 w-10 gap-3 z-30 drop-shadow-xl">
                     <CharSkillSetPreview skillSet={x.char.skillSet} />

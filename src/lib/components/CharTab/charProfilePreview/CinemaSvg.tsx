@@ -1,11 +1,11 @@
 import { MOVIE_MAPPING, circle } from "../../constantsUI";
 
 
-export const CinemaPreview = (charMovie: number) => {
+export const CinemaPreview = (x: { charMovie: number }) => {
     return (
         <>
             {Object.entries(MOVIE_MAPPING).map(([id, value], index_jsx) =>
-                <MoviePreview id={+id} value={value} charMovie={charMovie} index_jsx={index_jsx} />
+                <MoviePreview id={+id} value={value} charMovie={x.charMovie} index_jsx={index_jsx} />
             )}
         </>
     )
