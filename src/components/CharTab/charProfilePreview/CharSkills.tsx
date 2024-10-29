@@ -1,5 +1,6 @@
-import { Assets } from "../../../assets";
-import { SkillSet } from "../../../models/SkillSet";
+
+import { Assets } from "../../../lib/assets";
+import { SkillSet } from "../../../lib/models/SkillSet";
 import { ICON_FROM_SKILL_MAPPING } from "../../constantsUI";
 
 const CharSkillSetPreview = (prop: { skillSet: SkillSet }) => {

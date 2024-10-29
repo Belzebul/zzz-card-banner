@@ -1,7 +1,8 @@
-import { Assets } from "../../../assets"
-import { StatsToReadableMin } from "../../../constants"
-import { Stat } from "../../../models/DiscSet"
-import { Utils } from "../../../Utils"
+import { Assets } from "../../../lib/assets";
+import { StatsToReadableMin } from "../../../lib/constants";
+import { Stat } from "../../../lib/models/DiscSet";
+import { Utils } from "../../../lib/Utils";
+
 
 export const iconSize = 16
 

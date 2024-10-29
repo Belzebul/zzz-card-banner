@@ -1,8 +1,8 @@
+import { Assets } from "../../../lib/assets";
+import { StatsToReadableMin } from "../../../lib/constants";
+import { Disc, DiscSet, Stat } from "../../../lib/models/DiscSet";
+import { Utils } from "../../../lib/Utils";
 
-import { Assets } from "../../../assets";
-import { StatsToReadableMin } from "../../../constants";
-import { Disc, DiscSet, Stat } from "../../../models/DiscSet";
-import { Utils } from "../../../Utils";
 
 const DiscSetPreview = (x: { discSet: DiscSet }) => {
     const discSet = x.discSet;
@@ -29,7 +29,7 @@ const DiscCard = (x: { disc: Disc | undefined }) => {
     return (
         <div className="card-primary w-[210px] h-[245px] p-6" >
             <div className="relative z-20">
-                <img src={url} className="absolute w-[200px] max-w-none -top-[80px] -right-[72px] z-10 opacity-35 blur-[2px]" />
+                <img src={url} className="absolute w-[200px] max-w-none -top-[80px] -right-[72px] z-10 opacity-40 blur-[2px]" />
                 <DiscStatsSummary disc={disc} />
             </div>
         </div >

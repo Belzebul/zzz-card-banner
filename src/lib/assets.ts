@@ -1,6 +1,7 @@
-import { ICON_FROM_CAMP_MAPPING, ICON_FROM_ELEMENT_MAPPING, ICON_FROM_SKILL_MAPPING, ICON_FROM_STAT_MAPPING, ICON_FROM_WEAPON_MAPPING as ICON_FROM_WEAPONTYPE_MAPPING } from "./components/constantsUI";
+
 import { Stat } from "./models/DiscSet";
 
+import { ICON_FROM_CAMP_MAPPING, ICON_FROM_ELEMENT_MAPPING, ICON_FROM_ROLE_MAPPING, ICON_FROM_SKILL_MAPPING, ICON_FROM_STAT_MAPPING, ICON_FROM_WEAPON_MAPPING } from "../components/constantsUI";
 import discset_data from "../data/base_discset_data.json";
 import wengine_data from "../data/base_wengine_data.json";
 import { dataDiscSetsMeta as DataDiscSetsMeta } from "./types/discs_metadata";
@@ -40,7 +41,7 @@ export class Assets {
     static getWeapon(id: string) {
         if (!id) return Assets.getBlank();
 
-        return Assets.getImageUrl(`/icon/weaponType/${ICON_FROM_WEAPONTYPE_MAPPING[+id]}`);
+        return Assets.getImageUrl(`/icon/weaponType/${ICON_FROM_WEAPON_MAPPING[+id]}`);
     }
 
     static getElement(elementid: string) {
@@ -66,5 +67,9 @@ export class Assets {
 
     static getTutorial() {
         return Assets.getImageUrl(`/misc/zzz_card_banner_instructions.webp`)
+    }
+
+    static getRole(id: number) {
+        return Assets.getImageUrl(`/icon/role/${ICON_FROM_ROLE_MAPPING[id]}`)
     }
 }

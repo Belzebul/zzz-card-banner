@@ -7,9 +7,7 @@
         font-family: "zzz";
         font-stretch: 90%;
         white-space: nowrap;
-        src:
-            local("Mont Heavy"),
-            url(./fonts/ZZZ_FR.ttf) format("truetype");
+        src: local("Mont Heavy"), url(./fonts/ZZZ_FR.ttf) format("truetype");
     }
 
     @font-face {
@@ -43,7 +41,7 @@
 
 @layer components {
     .card-primary {
-        @apply relative overflow-hidden border border-solid rounded-xl border-stone-600 bg-stone-700 transition-all duration-500 hover:border-opacity-15 bg-opacity-60 border-opacity-50 shadow-xl p-7;
+        @apply relative overflow-hidden border border-solid rounded-xl border-stone-700 bg-stone-800 transition-all duration-500 hover:border-opacity-15 bg-opacity-60 border-opacity-50 shadow-xl p-7;
     }
 
     .divider-base {
@@ -58,9 +56,35 @@
         @apply border border-dashed grow my-auto mx-[10px];
     }
 
+    .button-base {
+        @apply text-sm text-gray-900 border border-stone-300 rounded-md cursor-pointer bg-gray-50 dark:text-stone-400 focus:outline-none dark:bg-stone-700 dark:border-stone-600 dark:placeholder-gray-400 text-[16px] opacity-90;
+    }
+
     .text-border {
         -webkit-text-stroke-width: 4px;
         -webkit-text-stroke-color: #000000cc;
         paint-order: stroke fill;
+    }
+}
+
+@layer utilities {
+    .scrollbar::-webkit-scrollbar {
+        width: 10px;
+        height: 20px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        border-radius: 100vh;
+        background: #101010;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: #78716c;
+        border-radius: 100vh;
+        border: 1px solid #1c1917;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #44403c;
     }
 }

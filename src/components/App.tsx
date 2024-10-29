@@ -1,13 +1,10 @@
 import { toPng } from "html-to-image";
-import React, { useEffect, useRef, useState } from "react";
-import { Assets } from "../assets";
-import DB from "../DB/db";
-import { SaveState } from "../DB/saveState";
-import { ServiceHoyolab } from "../importer/hoyolab_parser";
-import { Character } from "../models/Character";
-import CharProfile from "./CharTab/charProfilePreview/CharProfile";
-import CharStatSummary from "./CharTab/charStatPreview/CharStatsSummary";
-import DiscSetPreview from "./CharTab/discSetPreview/DiscSetPreview";
+import React, { useRef, useState } from "react";
+import DB from "../lib/DB/db";
+import { SaveState } from "../lib/DB/saveState";
+import { ServiceHoyolab } from "../lib/importer/hoyolab_parser";
+import { Character } from "../lib/models/Character";
+import Tabs from "./Tabs";
 
 SaveState.load()
 
@@ -79,18 +76,10 @@ export const ExternalLayout: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        const charAux = Object.values(DB.getCharactersById())[0];
-        if (charAux && charAux.name !== char.name) {
-            setChar(charAux);
-        }
-
-    }, [char]);
-
     return (
-        <div className="flex flex-col bg-neutral-950 box-border min-h-min min-w-min m-4 rounded-md">
+        <div className="flex flex-col bg-neutral-950 box-border min-w-min max-h-screen rounded-md overflow-y-scroll scrollbar">
 
-            <div className="flex justify-between items-center h-[60px] w-full bg-gradient-to-r from-amber-600 to-orange-950 rounded-t-md">
+            <div className="flex justify-between items-center h-[60px] w-full bg-gradient-to-r from-amber-600 to-orange-950 rounded-t-md ">
                 <span className='text-[38px] font-["paybooc"] text-stone-100 mx-4'>
                     Capiroto ZZZ Card Build
                 </span>
@@ -113,25 +102,7 @@ export const ExternalLayout: React.FC = () => {
                 </div>
             </div>
             <div />
-            <div className="flex items-center p-[10px] m-0 mx-auto h-min-[100%]">
-                <div ref={refToPng} className="flex gap-2 bg-stone-900 p-2 rounded-2xl">
-                    <div className="flex flex-col">
-                        <CharProfile char={char} />
-                    </div>
-
-                    <div className="flex flex-col">
-                        <CharStatSummary char={char} />
-                    </div>
-
-                    <div className="flex flex-col">
-                        <DiscSetPreview discSet={char.discSet} />
-                    </div>
-                </div>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-                <span className="text-4xl my-8">Instructions</span>
-                <img className="my-8" src={Assets.getTutorial()} />
-            </div>
+            <Tabs />
         </div>
     );
 };

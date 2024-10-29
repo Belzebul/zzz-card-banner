@@ -1,4 +1,4 @@
-import { AttributeID, CampID, ElementTypeID, SkillID, WeaponTypeID } from "../constants";
+import { AttributeID, CampID, CharacterID, ElementTypeID, SkillID, WeaponTypeID } from "../lib/constants"
 
 export const ICON_FROM_STAT_MAPPING: { [id: number]: string } = {
     [AttributeID.HP_BASE]: "prop-hp-icon.png",
@@ -65,6 +65,34 @@ export const ICON_FROM_SKILL_MAPPING: { [id: number]: string } = {
     [SkillID.ASSIST]: "assist.png",
     [SkillID.SPECIAL]: "special.png",
     [SkillID.CHAIN]: "chain.png",
+}
+
+export const ICON_FROM_ROLE_MAPPING: { [id: number]: string } = {
+
+    [CharacterID.ANBY]: 'IconRoleSelect01.webp',
+    [CharacterID.SOLDIER_11]: 'IconRoleSelect05.webp',
+    [CharacterID.CORIN]: 'IconRoleSelect09.webp',
+    [CharacterID.BILLY]: 'IconRoleSelect10.webp',
+    [CharacterID.NEKOMATA]: 'IconRoleSelect11.webp',
+    [CharacterID.NICOLE]: 'IconRoleSelect12.webp',
+    [CharacterID.KOLEDA]: 'IconRoleSelect14.webp',
+    [CharacterID.ANTON]: 'IconRoleSelect15.webp',
+    [CharacterID.BEN]: 'IconRoleSelect16.webp',
+    [CharacterID.SOUKAKU]: 'IconRoleSelect17.webp',
+    [CharacterID.LYCAON]: 'IconRoleSelect18.webp',
+    [CharacterID.GRACE]: 'IconRoleSelect20.webp',
+    [CharacterID.ELLEN]: 'IconRoleSelect21.webp',
+    [CharacterID.RINA]: 'IconRoleSelect22.webp',
+    [CharacterID.ZHUYUAN]: 'IconRoleSelect23.webp',
+    [CharacterID.JANE]: 'IconRoleSelect24.webp',
+    [CharacterID.CEASAR]: 'IconRoleSelect25.webp',
+    [CharacterID.LIGHTER]: 'IconRoleSelect26.webp',
+    [CharacterID.LUCY]: 'IconRoleSelect27.webp',
+    [CharacterID.PIPER]: 'IconRoleSelect28.webp',
+    [CharacterID.QINGYI]: 'IconRoleSelect29.webp',
+    [CharacterID.SETH]: 'IconRoleSelect30.webp',
+    [CharacterID.YANAGI]: 'IconRoleSelect31.webp',
+    [CharacterID.BURNICE]: 'IconRoleSelect32.webp',
 }
 
 export const circle = "M40,0A40,40,0,1,0,80,40,40,40,0,0,0,40,0Zm0,71.91A31.91,31.91,0,1,1,71.91,40,32,32,0,0,1,40,71.91Z"

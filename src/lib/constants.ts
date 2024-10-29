@@ -24,7 +24,7 @@ export const CHAR_LIST_CODES = [
     "Ellen",
 ]
 
-export type CharCode = {
+export type CharCode = [
     "Corin",
     "QingYi",
     "Jane",
@@ -48,7 +48,7 @@ export type CharCode = {
     "Seth",
     "Burnice",
     "Ellen",
-}
+]
 
 export const CharacterID = {
     CORIN: "1061",
@@ -72,7 +72,10 @@ export const CharacterID = {
     KOLEDA: "1101",
     SETH: "1271",
     BURNICE: "1171",
-    ELLEN: "1191"
+    ELLEN: "1191",
+    CEASAR: "",
+    LIGHTER: "",
+    YANAGI: "",
 }
 
 export const AttributeID = {
