@@ -3,7 +3,18 @@ import { SaveState } from "../../lib/DB/saveState";
 import { ServiceHoyolab } from "../../lib/importer/hoyolab_parser";
 
 
-export const ButtonImportFile = (props: { onChange: any }) => {
+const ButtonImportFile = () => {
+
+    const loadData = (hoyolabJson: any) => {
+        const arrAux = Array.isArray(hoyolabJson) ? hoyolabJson : [hoyolabJson];
+
+        arrAux.forEach((value) => {
+            const charAux = new ServiceHoyolab(value).buildCharacter();
+            DB.setCharacter(charAux);
+        })
+
+        SaveState.save();
+    }
 
     const useImportFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files || !e.target.files[0])
@@ -14,7 +25,6 @@ export const ButtonImportFile = (props: { onChange: any }) => {
             return;
 
         const fileReader = new FileReader();
-
         fileReader.readAsText(e.target.files[0], "UTF-8");
         fileReader.onload = (e) => {
             const target = e.target;
@@ -23,13 +33,9 @@ export const ButtonImportFile = (props: { onChange: any }) => {
 
             const result = target.result as string;
             const json = JSON.parse(result);
-            const charAux = new ServiceHoyolab(json).buildCharacter();
-            DB.setCharacter(charAux);
-            SaveState.save();
-            props.onChange(charAux);
+            loadData(json);
         };
     }
-
 
     return (
         <label className="flex justify-center my-4 ">
@@ -37,3 +43,5 @@ export const ButtonImportFile = (props: { onChange: any }) => {
         </label>
     )
 }
+
+export default ButtonImportFile

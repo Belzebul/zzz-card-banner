@@ -1,10 +1,10 @@
 import { toPng } from "html-to-image";
 import { RefObject } from "react";
 
-const ButtonToPng = (x: { refDiv: RefObject<HTMLDivElement> }) => {
+const ButtonToPng = (props: { refDiv: RefObject<HTMLDivElement> }) => {
     //const [tooltip, setTooptip] = useState("Invalid Card!");
 
-    const current = x.refDiv.current;
+    const current = props.refDiv.current;
 
     const png_clipboard = () => {
         console.log(current)
@@ -32,7 +32,7 @@ const ButtonToPng = (x: { refDiv: RefObject<HTMLDivElement> }) => {
     return (
         <div className="flex w-auto items-center z-30 my-4">
             <button type="button" onClick={png_clipboard} className="py-1 px-2 button-base">
-                copy to clipboard
+                Copy to Clipboard
             </button>
         </div>
     )

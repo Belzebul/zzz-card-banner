@@ -4,8 +4,7 @@ import { Disc, DiscSet, Stat } from "../../../lib/models/DiscSet";
 import { Utils } from "../../../lib/Utils";
 
 
-const DiscSetPreview = (x: { discSet: DiscSet }) => {
-    const discSet = x.discSet;
+const DiscSetPreview = ({ discSet }: { discSet: DiscSet }) => {
     return (
         <div className="flex w-[430px] gap-2 flex-wrap">
             <DiscCard disc={discSet.discs[1]} />
@@ -36,8 +35,7 @@ const DiscCard = (x: { disc: Disc | undefined }) => {
     )
 }
 
-const DiscStatsSummary = (x: { disc: Disc }) => {
-    const disc = x.disc;
+const DiscStatsSummary = ({ disc }: { disc: Disc }) => {
     if (disc.lvl === 0)
         return (
             <></>
@@ -64,8 +62,7 @@ const DiscStatsSummary = (x: { disc: Disc }) => {
 };
 
 
-const DiscStat = (x: { stat: Stat }) => {
-    const stat = x.stat;
+const DiscStat = ({ stat }: { stat: Stat }) => {
     return (
         <div className="flex justify-between" >
             <img src={Assets.getStatIcon(stat)} className="w-[14px] h-[14px] m-1" />

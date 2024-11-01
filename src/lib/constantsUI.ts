@@ -1,4 +1,4 @@
-import { AttributeID, CampID, CharacterID, ElementTypeID, SkillID, WeaponTypeID } from "../lib/constants"
+import { AttributeID, CampID, CharacterID, ElementTypeID, SkillID, WeaponTypeID } from "./constants"
 
 export const ICON_FROM_STAT_MAPPING: { [id: number]: string } = {
     [AttributeID.HP_BASE]: "prop-hp-icon.png",

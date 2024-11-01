@@ -1,8 +1,8 @@
 import { toPng } from "html-to-image";
 import { RefObject } from "react";
 
-const ButtonDownload = (x: { refDiv: RefObject<HTMLDivElement>, name: string }) => {
-    const current = x.refDiv.current
+const ButtonDownload = (props: { refDiv: RefObject<HTMLDivElement>, name: string }) => {
+    const current = props.refDiv.current
 
     const png_download = () => {
         if (current === null) {
@@ -12,7 +12,7 @@ const ButtonDownload = (x: { refDiv: RefObject<HTMLDivElement>, name: string }) 
         toPng(current, { cacheBust: false })
             .then(async (dataUrl) => {
                 const link = document.createElement("a");
-                link.download = x.name + ".png";
+                link.download = props.name + ".png";
                 link.href = dataUrl;
                 link.click();
             })

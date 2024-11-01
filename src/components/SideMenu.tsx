@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-const SideMenu = () => {
-
-    const BASE_PATH = "/zzz-card-banner"
+const SideMenu = ({ show }: { show: boolean }) => {
+    const BASE_PATH = "/zzz-card-banner";
 
     return (
-        <div className="flex flex-col max-w-fit bg-stone-900 items-start gap-2 p-7 text-[17px]">
-            <Link to={BASE_PATH + "/"}>Characters</Link>
-            <Link to={BASE_PATH + "/import"}>Import</Link>
+        <div className={show ? 'side-menu-content w-[150px]' : 'side-menu-content w-0'}>
+            <Link to={BASE_PATH + "/"} className="side-menu-button">Characters</Link>
+            <Link to={BASE_PATH + "/import"} className="side-menu-button">Import</Link>
         </div>
     )
 }

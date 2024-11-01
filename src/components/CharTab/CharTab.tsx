@@ -16,11 +16,11 @@ const CharTab = () => {
 
     const MenuChars = () => {
         return (
-            <div className="flex flex-row mx-2 mt-2 ">
+            <div className="flex flex-row mx-2 mt-2 max-w-[1150px] self-center overflow-x-auto scrollbar">
                 {Object.values(DB.getCharactersById()).map((value) => (
                     <div>
                         <button>
-                            <img src={Assets.getRole(value.id)} onClick={() => setChar(value)} className="w-24 h-auto" />
+                            <img src={Assets.getRole(value.id)} onClick={() => setChar(value)} className="w-auto h-[80px] max-w-none" />
                         </button>
                     </div>
                 ))}
@@ -41,9 +41,9 @@ const CharTab = () => {
     return (
         <div className="w-full flex-col">
             <div className="flex justify-self-center w-fit">
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col items-start ">
                     <MenuChars />
-                    <div ref={refToImage} className="flex gap-2 bg-stone-900 p-2 rounded-2xl">
+                    <div ref={refToImage} className="flex gap-2 m-2 bg-stone-900 p-2 rounded-2xl">
                         <div className="flex flex-col">
                             <CharProfile char={char} />
                         </div>

@@ -1,9 +1,9 @@
 
 import { Stat } from "./models/DiscSet";
 
-import { ICON_FROM_CAMP_MAPPING, ICON_FROM_ELEMENT_MAPPING, ICON_FROM_ROLE_MAPPING, ICON_FROM_SKILL_MAPPING, ICON_FROM_STAT_MAPPING, ICON_FROM_WEAPON_MAPPING } from "../components/constantsUI";
 import discset_data from "../data/base_discset_data.json";
 import wengine_data from "../data/base_wengine_data.json";
+import { ICON_FROM_CAMP_MAPPING, ICON_FROM_ELEMENT_MAPPING, ICON_FROM_ROLE_MAPPING, ICON_FROM_SKILL_MAPPING, ICON_FROM_STAT_MAPPING, ICON_FROM_WEAPON_MAPPING } from "./constantsUI";
 import { dataDiscSetsMeta as DataDiscSetsMeta } from "./types/discs_metadata";
 import { WengineMetadata } from "./types/wengine_metadata";
 
