@@ -1,4 +1,4 @@
-import game_data from "../../data/base_data_characters.json"
+import gameData from "../../data/base_data_characters.json"
 import { SkillID } from "../constants"
 import { Character } from "../models/Character"
 import { CharMetadata } from "../models/CharMetadata"
@@ -75,7 +75,7 @@ export class CharacterBuilder {
     }
 
     private get_lvl_range() {
-        return Math.ceil(this.lvl / 10)
+        return Math.ceil(this.lvl / 10);
     }
 }
 
@@ -84,14 +84,14 @@ export class ServiceHakushin {
     char_base: Hakushin_data = {}
 
     constructor() {
-        this.json = game_data;
+        this.json = gameData;
         this.load_all_characters();
     }
 
     public load_all_characters() {
         Object.keys(this.json).forEach((key) => {
-            const new_key = this.json[key].Name
-            this.char_base[new_key] = this.json[key]
+            const new_key = this.json[key].Name;
+            this.char_base[new_key] = this.json[key];
         });
     }
 }
