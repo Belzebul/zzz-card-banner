@@ -1,9 +1,7 @@
-
-
 const TooltipBox = ({ msg, active }: { msg: string, active: boolean }) => {
     return (
-        <div className={`absolute z-50 justify-center w-200 h-100 -top-[150%] left-[50%] -translate-x-1/2 duration-1000 ${active ? 'opacity-100' : 'opacity-0'}`}>
-            <span>
+        <div className={`absolute bg-stone-200 rounded-lg p-1 py-2 z-50 justify-center w-200 h-100 -top-[150%] left-[50%] -translate-x-1/2 duration-1000 ${active ? 'opacity-100' : 'opacity-0'}`}>
+            <span className="text-stone-900">
                 {msg}
             </span>
         </div>
