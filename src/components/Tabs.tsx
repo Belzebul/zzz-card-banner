@@ -6,7 +6,7 @@ import SideMenu from "./SideMenu"
 const Tabs = ({ show }: { show: boolean }) => {
     const BASE_PATH = "/zzz-card-banner"
     return (
-        <div className="flex flex-row self-stretch">
+        <div className="flex flex-row box-border self-stretch min-h-fit min-w-fit">
             <SideMenu show={show} />
             <Routes>
                 <Route path={BASE_PATH + "/"} element={<CharTab />} />

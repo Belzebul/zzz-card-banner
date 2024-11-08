@@ -23,10 +23,10 @@ const CharStatSummary = ({ char }: { char: Character }) => {
     );
 
     const WEngineStats = () => (
-        <div className="flex flex-col justify-between gap-[6px] w-[190px] ml-2">
+        <div className="flex flex-col justify-between gap-[6px] w-[190px] ml-2" key="wengine_stats">
             <span className="px-1">{wengine.name}</span>
             {wengine_stats.map((stat: Stat, reactId) =>
-                <StatRow stat={stat} reactId={reactId} />
+                <StatRow stat={stat} key={reactId} />
             )}
             <div className="relative flex left-6 gap-2">
 
@@ -38,19 +38,19 @@ const CharStatSummary = ({ char }: { char: Character }) => {
 
     return (
         <div className="flex flex-col justify-center gap-2 items-center h-[750px]">
-            <div className="flex justify-center w-[275px]">
+            <div className="flex justify-center w-[275px]" key='faction'>
                 <img src={camp} className="w-[200px] h-auto" />
             </div>
-            <div>
+            <div key='wengine'>
                 <div className="flex justify-between w-[275px] p-[10px]">
                     <WEngineIcon />
                     <WEngineStats />
                 </div>
             </div>
-            <div className="w-[275px] p-[10px] self-center">
-                <div className="flex flex-col justify-stretch gap-1">
+            <div className="w-[275px] p-[10px] self-center" key='mainStats'>
+                <div className="flex flex-col justify-stretch gap-1" key={char.id} >
                     {total_stats.map((stat: Stat, reactId) =>
-                        <StatRow stat={stat} reactId={reactId} />
+                        <StatRow stat={stat} key={reactId} />
                     )}
                 </div>
             </div>

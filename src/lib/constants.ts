@@ -1,29 +1,3 @@
-export const CHAR_LIST_CODES = [
-    "Corin",
-    "QingYi",
-    "Jane",
-    "Soukaku",
-    "Billy",
-    "Grace",
-    "Anby",
-    "Caesar",
-    "Nicole",
-    "Piper",
-    "Nekomata",
-    "Zhu Yuan",
-    "Lycaon",
-    "Lighter",
-    "Anton",
-    "Soldier 11",
-    "Ben",
-    "Rina",
-    "Lucy",
-    "Koleda",
-    "Seth",
-    "Burnice",
-    "Ellen",
-]
-
 export type CharCode = [
     "Corin",
     "QingYi",
@@ -48,6 +22,8 @@ export type CharCode = [
     "Seth",
     "Burnice",
     "Ellen",
+    "Yanagi",
+    "Miyabi",
 ]
 
 export const CharacterID = {
@@ -61,7 +37,6 @@ export const CharacterID = {
     NICOLE: "1031",
     PIPER: "1281",
     NEKOMATA: "1021",
-    NEKOMATA_2: "1022",
     ZHUYUAN: "1241",
     LYCAON: "1141",
     ANTON: "1111",
@@ -73,9 +48,10 @@ export const CharacterID = {
     SETH: "1271",
     BURNICE: "1171",
     ELLEN: "1191",
-    CEASAR: "",
-    LIGHTER: "",
-    YANAGI: "",
+    CEASAR: "1071",
+    LIGHTER: "1161",
+    YANAGI: "1221",
+    MIYABI: "1091",
 }
 
 export const AttributeID = {

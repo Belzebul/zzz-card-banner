@@ -64,8 +64,11 @@ export class Assets {
         return Assets.getImageUrl(`/icon/skill/${ICON_FROM_SKILL_MAPPING[+id]}`)
     }
 
+    static getTutorialAllChars() {
+        return Assets.getImageUrl(`/misc/zzz_card_banner_scraper_instructions.webp`)
+    }
 
-    static getTutorial() {
+    static getTutorialSingleChar() {
         return Assets.getImageUrl(`/misc/zzz_card_banner_instructions.webp`)
     }
 

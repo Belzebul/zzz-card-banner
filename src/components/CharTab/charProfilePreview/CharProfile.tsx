@@ -25,12 +25,8 @@ const CharProfile = ({ char }: { char: Character }) => {
             <img alt={char.name} src={Assets.getCharacterAvatarById(char.name)} className="absolute max-w-none top-0 -left-6 h-[750px] z-10 opacity-65" />
             <div className="relative w-full h-full">
                 <CharTitle />
-                <div className="flex flex-col absolute bottom-0 left-0 w-[42px] items-end gap-4 justify-end z-30">
-                    <CinemaPreview charMovie={char.rank} />
-                </div>
-                <div className="flex flex-col absolute bottom-14 right-0 w-10 gap-3 z-30 drop-shadow-xl">
-                    <CharSkillSetPreview skillSet={char.skillSet} />
-                </div>
+                <CinemaPreview charMovie={char.rank} />
+                <CharSkillSetPreview skillSet={char.skillSet} />
                 <div className="flex items-end absolute bottom-0 right-0 h-11 gap-2 z-30">
                     <img src={Assets.getWeapon(charMetadata.weapon)} className="h-8 drop-shadow-white" />
                     <img src={Assets.getElement(charMetadata.elementId)} className="h-11 drop-shadow-white" />

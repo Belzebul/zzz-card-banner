@@ -1,37 +1,49 @@
 import { toPng } from "html-to-image";
-import { RefObject } from "react";
+import { RefObject, useState } from "react";
+import TooltipBox from "../TooltipBox";
 
 const ButtonToPng = (props: { refDiv: RefObject<HTMLDivElement> }) => {
-    //const [tooltip, setTooptip] = useState("Invalid Card!");
-
     const current = props.refDiv.current;
 
+    const [msg, setMsg] = useState("");
+    const [active, setActive] = useState(false);
+
+    const blinkTooltip = () => {
+        setActive((prev) => !prev)
+        setTimeout(() => {
+            setActive((prev) => !prev);
+        }, 2000);
+    };
+
     const png_clipboard = () => {
-        console.log(current)
         if (current === null) {
-            return;
+            return
         }
 
         toPng(current, { cacheBust: false })
             .then(async (dataUrl) => {
-                let data = await fetch(dataUrl);
-                let blob = await data.blob();
+                let data = await fetch(dataUrl)
+                let blob = await data.blob()
                 navigator.clipboard.write([
                     new ClipboardItem({
                         [blob.type]: blob,
                     }),
-                ]);
-                console.log("copy to clipboard!");
+                ])
+                setMsg("Copied!")
+                blinkTooltip();
             })
             .catch((err) => {
-                console.log("Failed to copy!")
-                console.log(err);
+                setMsg("Failed to copy!")
+                blinkTooltip();
+                console.log(err)
             });
     }
 
+
     return (
-        <div className="flex w-auto items-center z-30 my-4">
+        <div className="flex relative w-auto items-center z-50 my-4">
             <button type="button" onClick={png_clipboard} className="py-1 px-2 button-base">
+                <TooltipBox msg={msg} active={active} />
                 Copy to Clipboard
             </button>
         </div>

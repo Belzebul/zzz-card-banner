@@ -6,7 +6,7 @@ import { Utils } from "../../../lib/Utils";
 
 const DiscSetPreview = ({ discSet }: { discSet: DiscSet }) => {
     return (
-        <div className="flex w-[430px] gap-2 flex-wrap">
+        <div className="flex w-[428px] gap-2 flex-wrap">
             <DiscCard disc={discSet.discs[1]} />
             <DiscCard disc={discSet.discs[6]} />
             <DiscCard disc={discSet.discs[2]} />
@@ -53,8 +53,8 @@ const DiscStatsSummary = ({ disc }: { disc: Disc }) => {
                 <div className="divider-base divider-disc" />
                 <DiscStat stat={disc.main_stats} />
                 <div className="divider-base divider-disc" />
-                {disc.substats.map((stat) => (
-                    <DiscStat stat={stat} />
+                {disc.substats.map((stat, index) => (
+                    <DiscStat stat={stat} key={index} />
                 ))}
             </div>
         </div>
