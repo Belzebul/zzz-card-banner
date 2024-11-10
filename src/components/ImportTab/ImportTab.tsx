@@ -1,4 +1,5 @@
 import { Assets } from "../../lib/assets"
+import ButtonClearCache from "./ButtonClearCache"
 import ButtonImportFile from "./ButtonLoadFile"
 
 const ImportTab = () => {
@@ -6,7 +7,10 @@ const ImportTab = () => {
         <div className="flex items-center justify-center w-full h-fit">
             <div className="flex flex-col items-center justify-center">
                 <span className="text-4xl my-8">Instructions</span>
-                <ButtonImportFile />
+                <div className="flex relative flex-row gap-2 ">
+                    <ButtonImportFile />
+                    <ButtonClearCache />
+                </div>
                 <span className="self-start text-2xl my-8">First method:</span>
                 <span>
                     Use

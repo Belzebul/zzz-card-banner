@@ -12,7 +12,7 @@ const CharStatSummary = ({ char }: { char: Character }) => {
     const wengine_icon = Assets.getWEngine(wengine.id)
     const wengine_rarity = Assets.getRarity(wengine.rarity)
     const camp = Assets.getCamp(char.charMetadata.camp)
-    const wengine_lvl = (wengine.lvl === 0) ? "" : "Lv." + wengine.lvl;
+    const wengine_lvl = (wengine.lvl === -1) ? "" : "Lv." + wengine.lvl;
     const wengine_stars = (wengine.star === 0) ? "" : "R" + wengine.star;
 
     const WEngineIcon = () => (

@@ -21,7 +21,7 @@ const CharProfile = ({ char }: { char: Character }) => {
     );
 
     return (
-        <div className="card-primary w-[420px] h-[750px]">
+        <div className="card-primary w- w-[420px] h-[750px]">
             <img alt={char.name} src={Assets.getCharacterAvatarById(char.name)} className="absolute max-w-none top-0 -left-6 h-[750px] z-10 opacity-65" />
             <div className="relative w-full h-full">
                 <CharTitle />

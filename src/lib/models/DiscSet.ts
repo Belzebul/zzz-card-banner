@@ -8,7 +8,7 @@ export class Stat {
 
 
 export class Disc {
-    lvl: number = 0
+    lvl: number = -1
     pos: number = 0
     rarity: string = ""
     equipset_id: number = 0

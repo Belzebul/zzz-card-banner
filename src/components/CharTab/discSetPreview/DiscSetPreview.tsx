@@ -36,7 +36,7 @@ const DiscCard = (x: { disc: Disc | undefined }) => {
 }
 
 const DiscStatsSummary = ({ disc }: { disc: Disc }) => {
-    if (disc.lvl === 0)
+    if (disc.lvl === -1)
         return (
             <></>
         );
