@@ -60,8 +60,8 @@ export class Assets {
         return Assets.getImageUrl(`/icon/wengine/${wengine_meta[+id]['icon']}.webp`)
     }
 
-    static getSkill(id: string) {
-        return Assets.getImageUrl(`/icon/skill/${ICON_FROM_SKILL_MAPPING[+id]}`)
+    static getSkill(id: number) {
+        return Assets.getImageUrl(`/icon/skill/${ICON_FROM_SKILL_MAPPING[id]}`)
     }
 
     static getTutorialAllChars() {

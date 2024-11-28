@@ -62,7 +62,7 @@
     }
 
     .text-border {
-        -webkit-text-stroke-width: 4px;
+        -webkit-text-stroke-width: 6px;
         -webkit-text-stroke-color: #000000cc;
         paint-order: stroke fill;
     }
