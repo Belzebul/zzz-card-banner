@@ -133,11 +133,11 @@
         "icon": "Weapon_S_1161",
         "rank": 4,
         "type": 2,
-        "EN": "...",
-        "desc": "...",
-        "KO": "...",
+        "EN": "Blazing Laurel",
+        "desc": "A violent W-Engine that can ignite flames with a siphon. It deals simple and crude burn damage, encouraging relentless, bone-crushing follow-up attacks.",
+        "KO": "화염의 월계관",
         "CHS": "焰心桂冠",
-        "JA": "..."
+        "JA": "炎心の桂冠"
     },
     "13011": {
         "icon": "Weapon_A_Common_11",
@@ -159,15 +159,35 @@
         "CHS": "钢铁肉垫",
         "JA": "鋼の肉球"
     },
+    "13015": {
+        "icon": "Weapon_A_Common_15",
+        "rank": 3,
+        "type": 1,
+        "EN": "Marcato Desire",
+        "desc": "Gather 'round, mortals! Turn up the music!",
+        "KO": "열망의 악센트",
+        "CHS": "强音热望",
+        "JA": "強音デザイア"
+    },
     "14122": {
         "icon": "Weapon_S_1221",
         "rank": 4,
         "type": 3,
-        "EN": "...",
-        "desc": "...",
-        "KO": "...",
+        "EN": "Timeweaver",
+        "desc": "A new model of supercomputing W-Engine custom-made by HSO Section 6, equipped with the most elite calculation and analysis functions.",
+        "KO": "시류의 현자",
         "CHS": "时流贤者",
-        "JA": "..."
+        "JA": "刻流の賢者"
+    },
+    "14120": {
+        "icon": "Weapon_S_1201",
+        "rank": 4,
+        "type": 1,
+        "EN": "Zanshin Herb Case",
+        "desc": "Bitterness and pain beget hope, and he devours them all.",
+        "KO": "잔심의 청낭",
+        "CHS": "残心青囊",
+        "JA": "残心の青籠"
     },
     "14114": {
         "icon": "Weapon_S_1141",
@@ -249,6 +269,16 @@
         "CHS": "深海访客",
         "JA": "ディープシー・ビジター"
     },
+    "14132": {
+        "icon": "Weapon_S_1321",
+        "rank": 4,
+        "type": 1,
+        "EN": "Item_Weapon_S_1321_Name",
+        "desc": "The latest tactical W-Engine used by Public Security's elite Hollow squads, possessing a powerful Ether energy source. It's Zhu Yuan's favored model.",
+        "KO": "Item_Weapon_S_1321_Name",
+        "CHS": "伊芙琳测试音擎",
+        "JA": "Item_Weapon_S_1321_Name"
+    },
     "14117": {
         "icon": "Weapon_S_1171",
         "rank": 4,
@@ -309,6 +339,16 @@
         "CHS": "「残响」-Ⅲ型",
         "JA": "「残響」-Ⅲ型"
     },
+    "14109": {
+        "icon": "Weapon_S_1091",
+        "rank": 4,
+        "type": 3,
+        "EN": "Hailstorm Shrine",
+        "desc": "Hail falls before the shrine, waking her. The blizzard is coming.",
+        "KO": "싸락눈 내린 별각",
+        "CHS": "霰落星殿",
+        "JA": "あられ落つ星殿"
+    },
     "13004": {
         "icon": "Weapon_A_Common_04",
         "rank": 3,
@@ -338,6 +378,16 @@
         "KO": "스팀오븐",
         "CHS": "人为刀俎",
         "JA": "まな板の鯉"
+    },
+    "14131": {
+        "icon": "Weapon_S_1311",
+        "rank": 4,
+        "type": 4,
+        "EN": "Item_Weapon_S_1311_Name",
+        "desc": "The latest tactical W-Engine used by Public Security's elite Hollow squads, possessing a powerful Ether energy source. It's Zhu Yuan's favored model.",
+        "KO": "Item_Weapon_S_1311_Name",
+        "CHS": "耀嘉音测试音擎",
+        "JA": "Item_Weapon_S_1311_Name"
     },
     "13127": {
         "icon": "Weapon_A_1271",

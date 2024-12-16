@@ -75,6 +75,7 @@ export const ICON_FROM_ROLE_MAPPING: { [id: number]: string } = {
     [CharacterID.BILLY]: 'IconRoleSelect10.webp',
     [CharacterID.NEKOMATA]: 'IconRoleSelect11.webp',
     [CharacterID.NICOLE]: 'IconRoleSelect12.webp',
+    [CharacterID.MIYABI]: 'IconRoleSelect13.webp',
     [CharacterID.KOLEDA]: 'IconRoleSelect14.webp',
     [CharacterID.ANTON]: 'IconRoleSelect15.webp',
     [CharacterID.BEN]: 'IconRoleSelect16.webp',
@@ -93,6 +94,7 @@ export const ICON_FROM_ROLE_MAPPING: { [id: number]: string } = {
     [CharacterID.SETH]: 'IconRoleSelect30.webp',
     [CharacterID.YANAGI]: 'IconRoleSelect31.webp',
     [CharacterID.BURNICE]: 'IconRoleSelect32.webp',
+    [CharacterID.HARUMASA]: 'IconRoleSelect35.webp',
 }
 
 export const circle = "M40,0A40,40,0,1,0,80,40,40,40,0,0,0,40,0Zm0,71.91A31.91,31.91,0,1,1,71.91,40,32,32,0,0,1,40,71.91Z"

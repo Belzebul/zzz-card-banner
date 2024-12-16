@@ -25,6 +25,8 @@ function findKeyByAttr(object: { [id: number]: StatsBaseKeys }, value: string) {
     return Object.keys(object).find(key => object[+key] === value);
 }
 
+
+
 export class StatsBase {
     hp: number = 0.0
     hp_perc: number = 0.0

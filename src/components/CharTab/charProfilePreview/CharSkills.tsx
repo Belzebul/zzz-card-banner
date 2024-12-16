@@ -1,4 +1,3 @@
-
 import { Assets } from "../../../lib/assets";
 import { SkillID } from "../../../lib/constants";
 import { SkillSet } from "../../../lib/models/SkillSet";
@@ -17,7 +16,12 @@ const CharSkillSetPreview = ({ skillSet }: { skillSet: SkillSet }) => {
     )
 }
 
-const SkillPreview = ({ lvl, skillId }: { lvl: string, skillId: number }) => {
+type SkillPreviewProps = {
+    lvl: string
+    skillId: number
+}
+
+const SkillPreview = ({ lvl, skillId }: SkillPreviewProps) => {
     return (
         <div className="relative flex justify-center">
             <span className="absolute -bottom-2 font-['zzz'] text-lg text-border">
@@ -29,14 +33,14 @@ const SkillPreview = ({ lvl, skillId }: { lvl: string, skillId: number }) => {
 }
 
 
-function getSkillLvl(skillSet: SkillSet, id: number) {
+const getSkillLvl = (skillSet: SkillSet, id: number) => {
     if (id in skillSet)
         return skillSet[id].level.toString();
 
     return "0";
 }
 
-function getCoreLvl(skillSet: SkillSet, id: number) {
+const getCoreLvl = (skillSet: SkillSet, id: number) => {
     if (!(id in skillSet))
         return "";
 

@@ -6,7 +6,7 @@ import { Utils } from "../../../lib/Utils";
 
 export const iconSize = 16
 
-export const StatRow = ({ stat }: { stat: Stat }): JSX.Element => {
+const StatRow = ({ stat }: { stat: Stat }) => {
     return (
         <div className="flex justify-between self-stretch">
             <img className="w-4 h-4 m-1" src={Assets.getStatIcon(stat)} />
@@ -16,3 +16,4 @@ export const StatRow = ({ stat }: { stat: Stat }): JSX.Element => {
         </div>
     )
 }
+export default StatRow

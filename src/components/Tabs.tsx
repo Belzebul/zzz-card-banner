@@ -3,7 +3,11 @@ import CharTab from "./CharTab/CharTab"
 import ImportTab from "./ImportTab/ImportTab"
 import SideMenu from "./SideMenu"
 
-const Tabs = ({ show }: { show: boolean }) => {
+type TabsProps = {
+    show: boolean
+}
+
+const Tabs = ({ show }: TabsProps) => {
     const BASE_PATH = "/zzz-card-banner"
     return (
         <div className="flex flex-row box-border self-stretch min-h-fit min-w-fit">

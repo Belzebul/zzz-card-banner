@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
-const SideMenu = ({ show }: { show: boolean }) => {
+
+type SideMenuProps = {
+    show: boolean
+}
+
+const SideMenu = ({ show }: SideMenuProps) => {
     const BASE_PATH = "/zzz-card-banner";
 
     return (

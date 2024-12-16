@@ -5,7 +5,6 @@ import { CinemaPreview } from "./CinemaSvg";
 
 
 const CharProfile = ({ char }: { char: Character }) => {
-    //const { char } = props;
     const { charMetadata } = char;
 
     if (!char.name) {

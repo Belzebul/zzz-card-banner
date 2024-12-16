@@ -3,7 +3,7 @@ import { Assets } from "../../../lib/assets";
 import { Character } from "../../../lib/models/Character";
 import { Stat } from "../../../lib/models/DiscSet";
 import { viewStats } from "../../../lib/models/StatsBase";
-import { StatRow } from "./StatRow";
+import StatRow from "./StatRow";
 
 const CharStatSummary = ({ char }: { char: Character }) => {
     const { wengine } = char
@@ -48,7 +48,7 @@ const CharStatSummary = ({ char }: { char: Character }) => {
                 </div>
             </div>
             <div className="w-[275px] p-[10px] self-center" key='mainStats'>
-                <div className="flex flex-col justify-stretch gap-1" key={char.id} >
+                <div className="flex flex-col justify-stretch gap-1" key={char.id}>
                     {total_stats.map((stat: Stat, reactId) =>
                         <StatRow stat={stat} key={reactId} />
                     )}

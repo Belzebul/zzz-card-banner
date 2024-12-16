@@ -24,6 +24,7 @@ export type CharCode = [
     "Ellen",
     "Yanagi",
     "Miyabi",
+    "Harumasa",
 ]
 
 export const CharacterID = {
@@ -52,6 +53,7 @@ export const CharacterID = {
     LIGHTER: "1161",
     YANAGI: "1221",
     MIYABI: "1091",
+    HARUMASA: "1201",
 }
 
 export const AttributeID = {
@@ -104,7 +106,9 @@ export const DiscSetID = {
     CHAOTIC_METAL: 32300,
     THUNDER_METAL: 32400,
     POLAR_METAL: 32500,
-    FANGED_METAL: 32600
+    FANGED_METAL: 32600,
+    ASTRAL_VOICE: 32800,
+    BLADE_SONG: 32700,
 }
 
 export const HOYO_2P_DISCSET: { [id: number]: number[] } = {
@@ -122,6 +126,8 @@ export const HOYO_2P_DISCSET: { [id: number]: number[] } = {
     [DiscSetID.POLAR_METAL]: [AttributeID.ICE_DMG, 10.0],
     [DiscSetID.THUNDER_METAL]: [AttributeID.ELEC_DMG, 10.0],
     [DiscSetID.FANGED_METAL]: [AttributeID.PHYS_DMG, 10.0],
+    [DiscSetID.ASTRAL_VOICE]: [AttributeID.ATK_P, 10.0],
+    [DiscSetID.BLADE_SONG]: [AttributeID.CRIT_DMG, 16.0],
 }
 
 export const StatsToReadableShort = {

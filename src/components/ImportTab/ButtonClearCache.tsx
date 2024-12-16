@@ -19,7 +19,12 @@ const ButtonClearCache = () => {
     )
 }
 
-const DialogBox = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
+type DialogBoxProps = {
+    isOpen: boolean
+    onClose: () => void
+}
+
+const DialogBox = ({ isOpen, onClose }: DialogBoxProps) => {
     const onDelete = () => {
         localStorage.clear();
         DB.resetStore();
