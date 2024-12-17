@@ -1,8 +1,10 @@
 
+import discset_data from "../../../data/base_discset_data.json";
 import { Assets } from "../../../lib/assets";
 import { Character } from "../../../lib/models/Character";
 import { Stat } from "../../../lib/models/DiscSet";
 import { viewStats } from "../../../lib/models/StatsBase";
+import { dataDiscSetsMeta as DataDiscSetsMeta } from "../../../lib/types/discs_metadata";
 import StatRow from "./StatRow";
 
 const CharStatSummary = ({ char }: { char: Character }) => {
@@ -12,8 +14,15 @@ const CharStatSummary = ({ char }: { char: Character }) => {
     const wengine_icon = Assets.getWEngine(wengine.id)
     const wengine_rarity = Assets.getRarity(wengine.rarity)
     const camp = Assets.getCamp(char.charMetadata.camp)
+    const disc_set_bonus = char.discSet.disc_sets_bonus
     const wengine_lvl = (wengine.lvl === -1) ? "" : "Lv." + wengine.lvl;
     const wengine_stars = (wengine.star === 0) ? "" : "R" + wengine.star;
+    const discs_meta: DataDiscSetsMeta = discset_data
+    console.log(discs_meta)
+    console.log(disc_set_bonus)
+    Object.entries(disc_set_bonus).map(([id, value]) =>
+        console.log(id + " " + value)
+    )
 
     const WEngineIcon = () => (
         <div className="relative w-[72px] h-[72px]">
@@ -24,7 +33,7 @@ const CharStatSummary = ({ char }: { char: Character }) => {
 
     const WEngineStats = () => (
         <div className="flex flex-col justify-between gap-[6px] w-[190px] ml-2" key="wengine_stats">
-            <span className="px-1">{wengine.name}</span>
+            <span className="px-1 text-balance">{wengine.name}</span>
             {wengine_stats.map((stat: Stat, reactId) =>
                 <StatRow stat={stat} key={reactId} />
             )}
@@ -39,7 +48,7 @@ const CharStatSummary = ({ char }: { char: Character }) => {
     return (
         <div className="flex flex-col justify-center gap-2 items-center h-[750px]">
             <div className="flex justify-center w-[275px]" key='faction'>
-                <img src={camp} className="w-[200px] h-auto" />
+                <img src={camp} className="w-[180px] h-auto" />
             </div>
             <div key='wengine'>
                 <div className="flex justify-between w-[275px] p-[10px]">
@@ -53,6 +62,15 @@ const CharStatSummary = ({ char }: { char: Character }) => {
                         <StatRow stat={stat} key={reactId} />
                     )}
                 </div>
+            </div>
+            <div className="w-[275px] px-[10px] self-center">
+                {Object.entries(disc_set_bonus).map(([id, value]) =>
+                    <div className="flex flex-row justify-between px-2 self-stretch">
+                        <span className="text-[15px]">{discs_meta[+id].EN.name}</span>
+                        <div className="flex border border-dashed box-border clear-both opacity-15 grow my-auto mx-[10px] " />
+                        <span className="text-[15px]"> {value}pc</span>
+                    </div>
+                )}
             </div>
         </div>
     )

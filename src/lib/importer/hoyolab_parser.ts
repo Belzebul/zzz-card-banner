@@ -94,7 +94,8 @@ export class ServiceDiscset {
 
         for (const equip of equips) {
             const suit: Suit = equip.equip_suit;
-            discSet.disc_sets_bonus[suit.suit_id] = suit.own;
+            if (suit.own > 1)
+                discSet.disc_sets_bonus[suit.suit_id] = suit.own;
             discs[equip.equipment_type] = this.buildDisc(equip);
         }
         discSet.discs = discs
