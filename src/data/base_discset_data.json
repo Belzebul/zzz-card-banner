@@ -322,7 +322,7 @@
         }
     },
     "32700": {
-        "icon": "SuitBranch&BladeSong.png",
+        "icon": "SuitBranch&BladeSong.webp",
         "EN": {
             "name": "Branch & Blade Song",
             "desc2": "CRIT DMG +16%",
@@ -345,7 +345,7 @@
         }
     },
     "32800": {
-        "icon": "SuitAstralVoice.png",
+        "icon": "SuitAstralVoice.webp",
         "EN": {
             "name": "Astral Voice",
             "desc2": "ATK +10%",
