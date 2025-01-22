@@ -56,6 +56,7 @@ export const ICON_FROM_CAMP_MAPPING: { [id: number]: string } = {
     [CampID.OBOL]: "IconOBOL.webp",
     [CampID.HSOS6]: "IconHSOS6.webp",
     [CampID.NEPS]: "IconNEPS.webp",
+    [CampID.STARS]: "IconStarsOfLyra.webp",
 }
 
 export const ICON_FROM_SKILL_MAPPING: { [id: number]: string } = {
@@ -95,7 +96,9 @@ export const ICON_FROM_ROLE_MAPPING: { [id: number]: string } = {
     [CharacterID.YANAGI]: 'IconRoleSelect31.webp',
     [CharacterID.BURNICE]: 'IconRoleSelect32.webp',
     [CharacterID.HARUMASA]: 'IconRoleSelect35.webp',
+    [CharacterID.ASTRA]: 'IconRoleSelect36.webp',
 }
+
 
 export const circle = "M40,0A40,40,0,1,0,80,40,40,40,0,0,0,40,0Zm0,71.91A31.91,31.91,0,1,1,71.91,40,32,32,0,0,1,40,71.91Z"
 

@@ -5,7 +5,7 @@ import { CharMetadata } from "../models/CharMetadata"
 import { SkillSet } from "../models/SkillSet"
 import { HOYO_MAP, StatsBase } from "../models/StatsBase"
 import { Avatar, Hakushin_data } from "../types/hakushin_types"
-import { Utils } from "../Utils"
+import { FLAT_STATS, precisionRound } from "../Utils"
 
 
 export class CharacterBuilder {
@@ -56,7 +56,7 @@ export class CharacterBuilder {
     }
 
     private calc_stat_growth(base: number, growth: number, asc_bonus: number) {
-        return Utils.precisionRound(base + (this.lvl - 1) * growth / 10000 + asc_bonus)
+        return precisionRound(base + (this.lvl - 1) * growth / 10000 + asc_bonus)
     }
 
     private set_core_stats_base() {
@@ -67,7 +67,7 @@ export class CharacterBuilder {
 
         for (const stat in core_stats) {
             let value: number = core_stats[stat].Value;
-            if (!Utils.FLAT_STATS.includes(core_stats[stat].Prop)) {
+            if (!(Object.values(FLAT_STATS).includes(core_stats[stat].Prop))) {
                 value /= 100;
             }
             this.character.char_base[HOYO_MAP[core_stats[stat].Prop]] += value;

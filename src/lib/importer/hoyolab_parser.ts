@@ -4,7 +4,7 @@ import { SkillSet } from '../models/SkillSet'
 import { HOYO_MAP } from '../models/StatsBase'
 import { WEngine } from '../models/WEngine'
 import { Avatar, Equip, HoyolabData, Property, Skill, Suit, Weapon } from '../types/hoyolab_types'
-import { Utils } from '../Utils'
+import { readValue } from '../Utils'
 import { CharacterBuilder } from './hakushin_parser'
 
 
@@ -71,7 +71,7 @@ export class ServiceWengine {
 
         wengine.atk = +this.json_wengine.main_properties[0].base;
         const second_stats = this.json_wengine.properties[0];
-        wengine[HOYO_MAP[second_stats.property_id]] = Utils.readValue(second_stats.base);
+        wengine[HOYO_MAP[second_stats.property_id]] = readValue(second_stats.base);
 
         return wengine;
     }
@@ -111,7 +111,7 @@ export class ServiceDiscset {
 
         const main_stats: Stat = new Stat()
         main_stats.id = equip.main_properties[0].property_id
-        main_stats.value = Utils.readValue(equip.main_properties[0].base)
+        main_stats.value = readValue(equip.main_properties[0].base)
 
         disc.main_stats = main_stats
         disc.substats = this.buildSubStats(equip.properties)
@@ -124,7 +124,7 @@ export class ServiceDiscset {
         for (const prop of properties) {
             const stat: Stat = new Stat()
             stat.id = prop.property_id
-            stat.value = Utils.readValue(prop.base)
+            stat.value = readValue(prop.base)
             substats.push(stat)
         }
 

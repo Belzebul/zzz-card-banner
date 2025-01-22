@@ -1,3 +1,4 @@
+
 export type CharCode = [
     "Corin",
     "QingYi",
@@ -54,9 +55,11 @@ export const CharacterID = {
     YANAGI: "1221",
     MIYABI: "1091",
     HARUMASA: "1201",
+    ASTRA: "1311",
 }
 
 export const AttributeID = {
+    NONE: 0,
     HP_BASE: 11101,
     HP_P: 11102,
     HP_FLAT: 11103,
@@ -87,7 +90,7 @@ export const AttributeID = {
     ELEC_DMG: 31803,
     ETHER_DMG: 31903,
     SHIELD_EFFECT: 99999,
-};
+} as const
 
 export type AttrKeys = keyof typeof AttributeID
 export type AttrValues = (typeof AttributeID)[AttrKeys]
@@ -130,7 +133,7 @@ export const HOYO_2P_DISCSET: { [id: number]: number[] } = {
     [DiscSetID.BLADE_SONG]: [AttributeID.CRIT_DMG, 16.0],
 }
 
-export const StatsToReadableShort = {
+export const StatsToReadableShort: { [id: number]: string } = {
     [AttributeID.HP_BASE]: "HP",
     [AttributeID.HP_P]: "HP %",
     [AttributeID.HP_FLAT]: "HP",
@@ -163,7 +166,7 @@ export const StatsToReadableShort = {
 }
 
 
-export const StatsToReadableMin = {
+export const StatsToReadableMin: { [id: number]: string } = {
     [AttributeID.HP_BASE]: "HP",
     [AttributeID.HP_P]: "HP %",
     [AttributeID.HP_FLAT]: "HP",
@@ -225,6 +228,7 @@ export const CampID = {
     OBOL: 5,
     HSOS6: 6,
     NEPS: 7,
+    STARS: 8,
 }
 
 export const SkillID = {

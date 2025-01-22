@@ -1,7 +1,7 @@
 import { Assets } from "../../../lib/assets";
 import { StatsToReadableMin } from "../../../lib/constants";
 import { Disc, DiscSet, Stat } from "../../../lib/models/DiscSet";
-import { Utils } from "../../../lib/Utils";
+import { isFlat } from "../../../lib/Utils";
 
 
 const DiscSetPreview = ({ discSet }: { discSet: DiscSet }) => {
@@ -71,7 +71,7 @@ const DiscStat = ({ stat }: { stat: Stat }) => {
             </span >
             <div className="divider-base divider-text" />
             <span className="font-['zzz']">
-                {Utils.isFlat(stat)}
+                {isFlat(stat)}
             </span>
         </div>
     )
