@@ -1,9 +1,33 @@
 import { AttributeID, AttrValues, Stats } from "../constants";
 import { BasicStatsObject } from "../types/basic_stats_object";
+import { Character } from "./Character";
 import { Stat } from "./DiscSet";
 
-export function viewStats(statsBase: StatsBase) {
-    let stats: Stat[] = []
+export const viewStatsChar = (charStats: Character) => {
+    let stats: Stat[] = [];
+
+    Object.entries(charStats).forEach(([id, value]) => {
+        const stat: Stat = new Stat();
+        const idAux: AttrValues = AttributeID.ENERGY_RATE === Number(id) ? <AttrValues>(Number(id) + 1) : <AttrValues>+id;
+
+        if (!Object.values(Stats).includes(idAux))
+            return;
+
+        if ((charStats.discSet.sumStats[idAux] === 0) && (charStats.wengine[idAux] === 0))
+            return;
+
+        stat.id = <AttrValues>+id;
+        if (Math.round(value) !== 0) {
+            stat.value = value;
+            stats.push(stat);
+        }
+    });
+    console.log(charStats);
+    return stats
+}
+
+export const viewStats = (statsBase: StatsBase): Stat[] => {
+    let stats: Stat[] = [];
 
     Object.entries(statsBase).forEach(([id, value]) => {
         const stat: Stat = new Stat();
@@ -13,7 +37,7 @@ export function viewStats(statsBase: StatsBase) {
         stat.id = <AttrValues>+id;
         if (Math.round(value) !== 0) {
             stat.value = value;
-            stats.push(stat)
+            stats.push(stat);
         }
     });
 

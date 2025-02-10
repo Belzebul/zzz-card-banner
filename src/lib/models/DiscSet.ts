@@ -39,7 +39,6 @@ export class DiscSet {
         Object.entries(this.disc_sets_bonus).forEach(([disc_id, numSet]) => {
             if (numSet >= 2) {
                 const statId = <AttrValues>HOYO_2P_DISCSET[+disc_id][0];
-                console.log(statId)
                 this.sumStats[statId] += HOYO_2P_DISCSET[+disc_id][1];
             }
         })

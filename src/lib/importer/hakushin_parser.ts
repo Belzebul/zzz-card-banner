@@ -53,7 +53,7 @@ export class CharacterBuilder {
         base_char[AttributeID.IMPACT] = stats.BreakStun;
         base_char[AttributeID.ENERGY_RATE] = stats.SpRecover / 100;
         base_char[AttributeID.PEN_P] = stats.PenRate / 100;
-        this.character.char_base = base_char;
+        this.character.charBase = base_char;
         this.character.lvl = this.lvl;
     }
 
@@ -75,7 +75,7 @@ export class CharacterBuilder {
                 value /= 100;
             }
 
-            this.character.char_base[prop] += value;
+            this.character.charBase[prop] += value;
         }
     }
 

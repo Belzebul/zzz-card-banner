@@ -1,53 +1,3 @@
-
-export type CharCode = [
-    "Corin",
-    "QingYi",
-    "Jane",
-    "Soukaku",
-    "Billy",
-    "Grace",
-    "Anby",
-    "Caesar",
-    "Nicole",
-    "Piper",
-    "Nekomata",
-    "Zhu Yuan",
-    "Lycaon",
-    "Lighter",
-    "Anton",
-    "Soldier 11",
-    "Ben",
-    "Rina",
-    "Lucy",
-    "Koleda",
-    "Seth",
-    "Burnice",
-    "Ellen",
-    "Yanagi",
-    "Miyabi",
-    "Harumasa",
-]
-
-export const AttrBase = {
-    HP: 1110,
-    ATK: 1210,
-    IMPACT: 1220,
-    DEF: 1310,
-    CRIT_RATE: 2010,
-    CRIT_DMG: 2110,
-    PEN: 2310,
-    PEN_FLAT: 2320,
-    ENERGY_RATE: 3050,
-    ANOMALY_PROF: 3120,
-    ANOMALY_MAST: 3140,
-    PHYS_DMG: 3150,
-    FIRE_DMG: 3160,
-    ICE_DMG: 3170,
-    ELEC_DMG: 3180,
-    ETHER_DMG: 3190,
-    SHIELD_EFFECT: 9999,
-}
-
 export const AttributeID = {
     NONE: 0,
     HP: 11101,
@@ -154,7 +104,7 @@ export const HOYO_MAP_SUB = {
     [AttributeID.DEF_FLAT]: [AttributeID.DEF],
     [AttributeID.CRIT_DMG_SUB]: [AttributeID.CRIT_DMG],
     [AttributeID.CRIT_RATE_SUB]: [AttributeID.CRIT_RATE],
-    [AttributeID.PEN_FLAT]: [AttributeID.PEN],
+    [AttributeID.PEN_P]: [AttributeID.PEN],
     [AttributeID.ANOMALY_PROF_SUB]: [AttributeID.ANOMALY_PROF],
 }
 
@@ -180,7 +130,7 @@ export const DiscSetID = {
 
 export const HOYO_2P_DISCSET: { [id: number]: number[] } = {
     [DiscSetID.WOODPECKER_ELECTRO]: [AttributeID.CRIT_RATE, 8.0],
-    [DiscSetID.PUFFER_ELECTRO]: [AttributeID.PEN_P, 8.0],
+    [DiscSetID.PUFFER_ELECTRO]: [AttributeID.PEN, 8.0],
     [DiscSetID.SHOCKSTAR]: [AttributeID.IMPACT_P, 6.0],
     [DiscSetID.FREEDOM_BLUE]: [AttributeID.ANOMALY_PROF, 30.0],
     [DiscSetID.HORMONE_PUNK]: [AttributeID.ATK_P, 10.0],

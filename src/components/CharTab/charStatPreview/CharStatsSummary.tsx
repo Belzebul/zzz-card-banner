@@ -3,13 +3,13 @@ import discset_data from "../../../data/base_discset_data.json";
 import { Assets } from "../../../lib/assets";
 import { Character } from "../../../lib/models/Character";
 import { Stat } from "../../../lib/models/DiscSet";
-import { viewStats } from "../../../lib/models/StatsBase";
+import { viewStats, viewStatsChar } from "../../../lib/models/StatsBase";
 import { dataDiscSetsMeta as DataDiscSetsMeta } from "../../../lib/types/discs_metadata";
 import StatRow from "./StatRow";
 
 const CharStatSummary = ({ char }: { char: Character }) => {
     const { wengine } = char
-    const total_stats = viewStats(char)
+    const total_stats = viewStatsChar(char)
     const wengine_stats = viewStats(wengine)
     const wengine_icon = Assets.getWEngine(wengine.id)
     const wengine_rarity = Assets.getRarity(wengine.rarity)
