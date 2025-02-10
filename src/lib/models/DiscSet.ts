@@ -1,8 +1,8 @@
-import { HOYO_2P_DISCSET } from "../constants"
-import { HOYO_MAP, StatsBase } from "./StatsBase"
+import { AttrValues, HOYO_2P_DISCSET } from "../constants"
+import { StatsBase } from "./StatsBase"
 
 export class Stat {
-    id: number = 0
+    id: AttrValues = 0
     value: number = 0
 }
 
@@ -20,7 +20,7 @@ export class Disc {
 export class DiscSet {
     discs: Record<number, Disc> = {};
     disc_sets_bonus: { [setid: number]: number } = {};
-    statBase: StatsBase = new StatsBase();
+    sumStats: StatsBase = new StatsBase();
 
     constructor() {
         this.emptyDiscSet();
@@ -33,25 +33,26 @@ export class DiscSet {
     }
 
     public sumDiscs(): StatsBase {
-        this.statBase = new StatsBase()
-        Object.values(this.discs).forEach((value) => this.sumStats(value));
+        this.sumStats = new StatsBase()
+        Object.values(this.discs).forEach((value) => this.sumDiscStats(value));
 
         Object.entries(this.disc_sets_bonus).forEach(([disc_id, numSet]) => {
             if (numSet >= 2) {
-                const stats_name = HOYO_MAP[HOYO_2P_DISCSET[+disc_id][0]];
-                this.statBase[stats_name] += HOYO_2P_DISCSET[+disc_id][1];
+                const statId = <AttrValues>HOYO_2P_DISCSET[+disc_id][0];
+                console.log(statId)
+                this.sumStats[statId] += HOYO_2P_DISCSET[+disc_id][1];
             }
         })
 
-        return this.statBase
+        return this.sumStats
     }
 
-    private sumStats(disc: Disc) {
+    private sumDiscStats(disc: Disc) {
         const mainStats: Stat = disc.main_stats;
-        this.statBase[HOYO_MAP[mainStats.id]] += mainStats.value;
+        this.sumStats[mainStats.id] += mainStats.value;
 
         for (const stat of disc.substats) {
-            this.statBase[HOYO_MAP[stat.id]] += stat.value;
+            this.sumStats[stat.id] += stat.value;
         }
     }
 }

@@ -1,10 +1,10 @@
+import { AttributeID, AttrValues } from '../constants'
 import { Character } from '../models/Character'
 import { Disc, DiscSet, Stat } from '../models/DiscSet'
 import { SkillSet } from '../models/SkillSet'
-import { HOYO_MAP } from '../models/StatsBase'
 import { WEngine } from '../models/WEngine'
 import { Avatar, Equip, HoyolabData, Property, Skill, Suit, Weapon } from '../types/hoyolab_types'
-import { readValue } from '../Utils'
+import { fixPropertyId, readValue } from '../Utils'
 import { CharacterBuilder } from './hakushin_parser'
 
 
@@ -28,14 +28,14 @@ export class ServiceHoyolab {
         character.rank = avatar.rank;
         character.id = avatar.id;
         character.name = avatar.name_mi18n;
-        character.calc_all();
+        character.calcAllStats();
         return character;
     }
 
     private getCharacterBaseData(avatar: Avatar) {
         const name_code = avatar.name_mi18n;
         const lvl = avatar.level;
-        const skillSet = this.getSkillSet(avatar.skills)
+        const skillSet = this.getSkillSet(avatar.skills);
         return new CharacterBuilder(
             name_code,
             lvl,
@@ -69,9 +69,10 @@ export class ServiceWengine {
         wengine.star = this.json_wengine.star;
         wengine.rarity = this.json_wengine.rarity;
 
-        wengine.atk = +this.json_wengine.main_properties[0].base;
+        wengine[AttributeID.ATK] = +this.json_wengine.main_properties[0].base;
         const second_stats = this.json_wengine.properties[0];
-        wengine[HOYO_MAP[second_stats.property_id]] = readValue(second_stats.base);
+        const attrId = fixPropertyId(second_stats.property_id);
+        wengine[attrId] = readValue(second_stats.base);
 
         return wengine;
     }
@@ -96,38 +97,41 @@ export class ServiceDiscset {
             const suit: Suit = equip.equip_suit;
             if (suit.own > 1)
                 discSet.disc_sets_bonus[suit.suit_id] = suit.own;
+
             discs[equip.equipment_type] = this.buildDisc(equip);
         }
-        discSet.discs = discs
-        return discSet
+        discSet.discs = discs;
+        return discSet;
     }
 
-    public buildDisc(equip: Equip) {
-        const disc: Disc = new Disc()
-        disc.lvl = equip.level
-        disc.pos = equip.equipment_type
-        disc.rarity = equip.rarity
-        disc.equipset_id = equip.equip_suit.suit_id
+    private buildDisc(equip: Equip) {
+        const disc: Disc = new Disc();
+        disc.lvl = equip.level;
+        disc.pos = equip.equipment_type;
+        disc.rarity = equip.rarity;
+        disc.equipset_id = equip.equip_suit.suit_id;
 
-        const main_stats: Stat = new Stat()
-        main_stats.id = equip.main_properties[0].property_id
-        main_stats.value = readValue(equip.main_properties[0].base)
+        const main_stats: Stat = new Stat();
+        main_stats.id = <AttrValues>fixPropertyId(equip.main_properties[0].property_id);
+        main_stats.value = readValue(equip.main_properties[0].base);
 
-        disc.main_stats = main_stats
-        disc.substats = this.buildSubStats(equip.properties)
-        return disc
+        disc.main_stats = main_stats;
+        disc.substats = this.buildSubStats(equip.properties);
+        return disc;
 
     }
 
-    public buildSubStats(properties: Property[]) {
-        const substats: Stat[] = []
+    private buildSubStats(properties: Property[]) {
+        const substats: Stat[] = [];
         for (const prop of properties) {
-            const stat: Stat = new Stat()
-            stat.id = prop.property_id
-            stat.value = readValue(prop.base)
-            substats.push(stat)
+            const stat: Stat = new Stat();
+            stat.id = <AttrValues>fixPropertyId(prop.property_id);
+            stat.value = readValue(prop.base);
+            substats.push(stat);
         }
 
         return substats
     }
+
+
 }

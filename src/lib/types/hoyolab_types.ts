@@ -1,9 +1,10 @@
+import { AttrValues } from "../constants"
 
 export interface HoyolabData {
-    data:Data
+    data: Data
 }
 
-export interface Data{
+export interface Data {
     avatar_list: Avatar[]
 }
 
@@ -44,6 +45,6 @@ export interface Suit {
     own: number
 }
 export interface Property {
-    property_id: number
+    property_id: AttrValues
     base: string
 }

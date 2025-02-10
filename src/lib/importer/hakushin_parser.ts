@@ -1,11 +1,12 @@
 import gameData from "../../data/base_data_characters.json"
-import { SkillID } from "../constants"
+import { AttributeID, AttrValues, SkillID } from "../constants"
 import { Character } from "../models/Character"
 import { CharMetadata } from "../models/CharMetadata"
 import { SkillSet } from "../models/SkillSet"
-import { HOYO_MAP, StatsBase } from "../models/StatsBase"
+import { StatsBase } from "../models/StatsBase"
+import { BasicStatsObject } from "../types/basic_stats_object"
 import { Avatar, Hakushin_data } from "../types/hakushin_types"
-import { FLAT_STATS, precisionRound } from "../Utils"
+import { DECIMAL_STATS } from "../Utils"
 
 
 export class CharacterBuilder {
@@ -35,28 +36,29 @@ export class CharacterBuilder {
         charMetadata.hitType = Object.keys(this.char_raw.HitType)[0];
         charMetadata.camp = Object.keys(this.char_raw.Camp)[0];
         this.character.charMetadata = charMetadata;
+
     }
 
     private set_stats_base() {
-        const base_char = new StatsBase();
+        const base_char: BasicStatsObject = new StatsBase();
         const stats = this.char_raw.Stats;
         const lvl_range = this.get_lvl_range();
-        base_char.atk = this.calc_stat_growth(stats.Attack, stats.AttackGrowth, this.char_raw.Level[lvl_range].Attack);
-        base_char.hp = this.calc_stat_growth(stats.HpMax, stats.HpGrowth, this.char_raw.Level[lvl_range].HpMax);
-        base_char.defense = this.calc_stat_growth(stats.Defence, stats.DefenceGrowth, this.char_raw.Level[lvl_range].Defence);
-        base_char.anomaly_prof = stats.ElementMystery;
-        base_char.anomaly_mastery = stats.ElementAbnormalPower;
-        base_char.crit_rate = stats.Crit / 100;
-        base_char.crit_dmg = stats.CritDamage / 100;
-        base_char.impact = stats.BreakStun;;
-        base_char.energy_regen = stats.SpRecover / 100;
-        base_char.pen_p = stats.PenRate / 100;
+        base_char[AttributeID.ATK] = this.calc_stat_growth(stats.Attack, stats.AttackGrowth, this.char_raw.Level[lvl_range].Attack);
+        base_char[AttributeID.HP] = this.calc_stat_growth(stats.HpMax, stats.HpGrowth, this.char_raw.Level[lvl_range].HpMax);
+        base_char[AttributeID.DEF] = this.calc_stat_growth(stats.Defence, stats.DefenceGrowth, this.char_raw.Level[lvl_range].Defence);
+        base_char[AttributeID.ANOMALY_PROF] = stats.ElementMystery;
+        base_char[AttributeID.ANOMALY_MAST] = stats.ElementAbnormalPower;
+        base_char[AttributeID.CRIT_RATE] = stats.Crit / 100;
+        base_char[AttributeID.CRIT_DMG] = stats.CritDamage / 100;
+        base_char[AttributeID.IMPACT] = stats.BreakStun;
+        base_char[AttributeID.ENERGY_RATE] = stats.SpRecover / 100;
+        base_char[AttributeID.PEN_P] = stats.PenRate / 100;
         this.character.char_base = base_char;
         this.character.lvl = this.lvl;
     }
 
     private calc_stat_growth(base: number, growth: number, asc_bonus: number) {
-        return precisionRound(base + (this.lvl - 1) * growth / 10000 + asc_bonus)
+        return Math.floor(base + (this.lvl - 1) * growth / 10000 + asc_bonus)
     }
 
     private set_core_stats_base() {
@@ -67,10 +69,13 @@ export class CharacterBuilder {
 
         for (const stat in core_stats) {
             let value: number = core_stats[stat].Value;
-            if (!(Object.values(FLAT_STATS).includes(core_stats[stat].Prop))) {
+            const prop = <AttrValues>core_stats[stat].Prop;
+
+            if (!(Object.values(DECIMAL_STATS).includes(prop))) {
                 value /= 100;
             }
-            this.character.char_base[HOYO_MAP[core_stats[stat].Prop]] += value;
+
+            this.character.char_base[prop] += value;
         }
     }
 
@@ -87,6 +92,8 @@ export class ServiceHakushin {
         this.json = gameData;
         this.load_all_characters();
     }
+
+
 
     public load_all_characters() {
         Object.keys(this.json).forEach((key) => {

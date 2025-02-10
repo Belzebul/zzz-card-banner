@@ -17,12 +17,8 @@ const CharStatSummary = ({ char }: { char: Character }) => {
     const disc_set_bonus = char.discSet.disc_sets_bonus
     const wengine_lvl = (wengine.lvl === -1) ? "" : "Lv." + wengine.lvl;
     const wengine_stars = (wengine.star === 0) ? "" : "R" + wengine.star;
-    const discs_meta: DataDiscSetsMeta = discset_data
-    console.log(discs_meta)
-    console.log(disc_set_bonus)
-    Object.entries(disc_set_bonus).map(([id, value]) =>
-        console.log(id + " " + value)
-    )
+    const discs_meta: DataDiscSetsMeta = discset_data;
+
 
     const WEngineIcon = () => (
         <div className="relative w-[72px] h-[72px]">
@@ -63,9 +59,9 @@ const CharStatSummary = ({ char }: { char: Character }) => {
                     )}
                 </div>
             </div>
-            <div className="w-[275px] px-[10px] self-center">
+            <div key='bonusSets' className="w-[275px] px-[10px] self-center">
                 {Object.entries(disc_set_bonus).map(([id, value]) =>
-                    <div className="flex flex-row justify-between px-2 self-stretch">
+                    <div key={id} className="flex flex-row justify-between px-2 self-stretch">
                         <span className="text-[15px]">{discs_meta[+id].EN.name}</span>
                         <div className="flex border border-dashed box-border clear-both opacity-15 grow my-auto mx-[10px] " />
                         <span className="text-[15px]"> {value}pc</span>

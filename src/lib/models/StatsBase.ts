@@ -1,19 +1,18 @@
-import { AttributeID } from "../constants";
+import { AttributeID, AttrValues, Stats } from "../constants";
+import { BasicStatsObject } from "../types/basic_stats_object";
 import { Stat } from "./DiscSet";
 
 export function viewStats(statsBase: StatsBase) {
     let stats: Stat[] = []
 
-    Object.keys(statsBase).forEach((param) => {
+    Object.entries(statsBase).forEach(([id, value]) => {
         const stat: Stat = new Stat();
-        const id = findKeyByAttr(HOYO_MAP, param);
-        if (id === undefined)
+        if (!Object.values(Stats).includes(<AttrValues>+id))
             return;
 
-        stat.id = +id;
-        const value = statsBase[param as keyof StatsBase];
-        if (value !== 0) {
-            stat.value = statsBase[param as keyof StatsBase];
+        stat.id = <AttrValues>+id;
+        if (Math.round(value) !== 0) {
+            stat.value = value;
             stats.push(stat)
         }
     });
@@ -21,66 +20,38 @@ export function viewStats(statsBase: StatsBase) {
     return stats
 }
 
-function findKeyByAttr(object: { [id: number]: StatsBaseKeys }, value: string) {
-    return Object.keys(object).find(key => object[+key] === value);
-}
-
-
-
-export class StatsBase {
-    hp: number = 0.0
-    hp_perc: number = 0.0
-    atk: number = 0.0
-    atk_perc: number = 0.0
-    defense: number = 0.0
-    def_perc: number = 0.0
-    impact: number = 0.0
-    impact_perc: number = 0.0
-    crit_rate: number = 0.0
-    crit_dmg: number = 0.0
-    pen_p: number = 0.0
-    pen_flat: number = 0.0
-    energy_regen: number = 0.0
-    energy_perc: number = 0.0
-    anomaly_prof: number = 0.0
-    anomaly_mastery: number = 0.0
-    phys_bonus: number = 0.0
-    fire_bonus: number = 0.0
-    ice_bonus: number = 0.0
-    elec_bonus: number = 0.0
-    ether_bonus: number = 0.0
+export class StatsBase implements BasicStatsObject {
+    [AttributeID.NONE]: number = 0.0;
+    [AttributeID.HP]: number = 0.0;
+    [AttributeID.HP_P]: number = 0.0;
+    [AttributeID.HP_FLAT]: number = 0.0;
+    [AttributeID.ATK]: number = 0.0;
+    [AttributeID.ATK_P]: number = 0.0;
+    [AttributeID.ATK_FLAT]: number = 0.0;
+    [AttributeID.IMPACT]: number = 0.0;
+    [AttributeID.IMPACT_P]: number = 0.0;
+    [AttributeID.DEF]: number = 0.0;
+    [AttributeID.DEF_P]: number = 0.0;
+    [AttributeID.DEF_FLAT]: number = 0.0;
+    [AttributeID.CRIT_RATE]: number = 0.0;
+    [AttributeID.CRIT_RATE_SUB]: number = 0.0;
+    [AttributeID.CRIT_DMG]: number = 0.0;
+    [AttributeID.CRIT_DMG_SUB]: number = 0.0;
+    [AttributeID.PEN]: number = 0.0;
+    [AttributeID.PEN_P]: number = 0.0;
+    [AttributeID.PEN_FLAT]: number = 0.0;
+    [AttributeID.ENERGY_RATE]: number = 0.0;
+    [AttributeID.ENERGY_P]: number = 0.0;
+    [AttributeID.ANOMALY_PROF]: number = 0.0;
+    [AttributeID.ANOMALY_PROF_SUB]: number = 0.0;
+    [AttributeID.ANOMALY_MAST]: number = 0.0;
+    [AttributeID.ANOMALY_MAST_P]: number = 0.0;
+    [AttributeID.PHYS_DMG]: number = 0.0;
+    [AttributeID.FIRE_DMG]: number = 0.0;
+    [AttributeID.ICE_DMG]: number = 0.0;
+    [AttributeID.ELEC_DMG]: number = 0.0;
+    [AttributeID.ETHER_DMG]: number = 0.0;
+    [AttributeID.SHIELD_EFFECT]: number = 0.0;
 }
 
 export type StatsBaseKeys = keyof StatsBase;
-
-export const HOYO_MAP: { [key: number]: StatsBaseKeys; } = {
-    [AttributeID.HP_BASE]: "hp",
-    [AttributeID.HP_P]: "hp_perc",
-    [AttributeID.HP_FLAT]: "hp",
-    [AttributeID.ATK_BASE]: "atk",
-    [AttributeID.ATK_P]: "atk_perc",
-    [AttributeID.ATK_FLAT]: "atk",
-    [AttributeID.IMPACT]: "impact",
-    [AttributeID.IMPACT_P]: "impact_perc",
-    [AttributeID.DEF_BASE]: "defense",
-    [AttributeID.DEF_P]: "def_perc",
-    [AttributeID.DEF_FLAT]: "defense",
-    [AttributeID.CRIT_RATE_BASE]: "crit_rate",
-    [AttributeID.CRIT_RATE]: "crit_rate",
-    [AttributeID.CRIT_DMG_BASE]: "crit_dmg",
-    [AttributeID.CRIT_DMG]: "crit_dmg",
-    [AttributeID.PEN_BASE]: "pen_p",
-    [AttributeID.PEN_P]: "pen_p",
-    [AttributeID.PEN_FLAT]: "pen_flat",
-    [AttributeID.ENERGY_RATE]: "energy_regen",
-    [AttributeID.ENERGY_P]: "energy_perc",
-    [AttributeID.ANOMALY_PROF_BASE]: "anomaly_prof",
-    [AttributeID.ANOMALY_PROF]: "anomaly_prof",
-    [AttributeID.ANOMALY_MAST_BASE]: "anomaly_mastery",
-    [AttributeID.ANOMALY_MAST]: "anomaly_mastery",
-    [AttributeID.PHYS_DMG]: "phys_bonus",
-    [AttributeID.FIRE_DMG]: "fire_bonus",
-    [AttributeID.ICE_DMG]: "ice_bonus",
-    [AttributeID.ELEC_DMG]: "elec_bonus",
-    [AttributeID.ETHER_DMG]: "ether_bonus"
-}
