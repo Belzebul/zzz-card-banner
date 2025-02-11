@@ -63,6 +63,7 @@ export const CharacterID = {
     MIYABI: "1091",
     HARUMASA: "1201",
     ASTRA: "1311",
+    EVELYN: "1321",
 }
 
 export const Stats: AttrValues[] = [

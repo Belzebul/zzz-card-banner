@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Assets } from "../../../lib/assets";
 import { HOYO_DISC_SUB_RATE, StatsToReadableMin } from "../../../lib/constants";
 import { Disc, DiscSet, Stat } from "../../../lib/models/DiscSet";
@@ -66,8 +67,11 @@ const DiscStatsSummary = ({ disc }: { disc: Disc }) => {
 
 
 const DiscMainStat = ({ stat }: StatProp) => {
+    const idString = "id" + String(stat.id);
+    useEffect(() => idDOMcustom(idString), []);
+
     return (
-        <div className="flex justify-between" >
+        <div className={idString + ` flex justify-between pr-1 rounded-md `}>
             <img src={Assets.getStatIcon(stat)} className="w-[14px] h-[14px] m-1" />
             <span className="font-['zzz']">
                 {StatsToReadableMin[stat.id]}
@@ -87,8 +91,12 @@ const numUpgrades = (stat: Stat) => {
 }
 
 const DiscSubStat = ({ stat }: StatProp) => {
+    const idString = "id" + String(stat.id);
+    useEffect(() => idDOMcustom(idString), []);
+
+
     return (
-        <div className="flex justify-between" >
+        <div className={idString + ` flex justify-between pr-1 rounded-md`} >
             <img src={Assets.getStatIcon(stat)} className="w-[14px] h-[14px] m-1" />
             <span className="font-['zzz']">
                 {StatsToReadableMin[stat.id]}
@@ -106,6 +114,31 @@ const DiscSubStat = ({ stat }: StatProp) => {
             </span>
         </div>
     )
+}
+
+export const idDOMcustom = (idString: string) => {
+    const hoverItems = document.querySelectorAll("." + idString);
+
+    hoverItems.forEach(item => {
+        item.addEventListener("mouseenter", () => {
+            hoverItems.forEach((el) => {
+                el.classList.add("bg-stone-600"); // Adiciona a classe do hover
+            });
+        });
+
+        item.addEventListener("mouseleave", () => {
+            hoverItems.forEach((el) => {
+                el.classList.remove("bg-stone-600"); // Remove o hover
+            });
+        });
+    });
+
+    return () => {
+        hoverItems.forEach(item => {
+            item.removeEventListener("mouseenter", () => { });
+            item.removeEventListener("mouseleave", () => { });
+        });
+    };
 }
 
 export default DiscSetPreview
