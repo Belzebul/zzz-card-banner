@@ -8,7 +8,8 @@ export const viewStatsChar = (charStats: Character) => {
 
     Object.entries(charStats).forEach(([id, value]) => {
         const stat: Stat = new Stat();
-        const idAux: AttrValues = AttributeID.ENERGY_RATE === Number(id) ? <AttrValues>(Number(id) + 1) : <AttrValues>+id;
+        const exceptionStats: number[] = [AttributeID.ENERGY_RATE, AttributeID.ANOMALY_MAST];
+        const idAux: AttrValues = exceptionStats.includes(Number(id)) ? <AttrValues>(Number(id) + 1) : <AttrValues>+id;
 
         if (!Object.values(Stats).includes(idAux))
             return;
