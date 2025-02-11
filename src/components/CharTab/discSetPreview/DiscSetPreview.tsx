@@ -67,7 +67,7 @@ const DiscStatsSummary = ({ disc }: { disc: Disc }) => {
 
 
 const DiscMainStat = ({ stat }: StatProp) => {
-    const idString = "id" + String(stat.id);
+    const idString = "id" + String(stat.id).slice(0, -1);
     useEffect(() => idDOMcustom(idString), []);
 
     return (
@@ -86,12 +86,11 @@ const DiscMainStat = ({ stat }: StatProp) => {
 
 const numUpgrades = (stat: Stat) => {
     const upgrades = (stat.value / HOYO_DISC_SUB_RATE[stat.id]) - 1;
-    console.log(stat.value);
-    return upgrades === 0 ? "" : "·".repeat(upgrades);
+    return "·".repeat(upgrades);
 }
 
 const DiscSubStat = ({ stat }: StatProp) => {
-    const idString = "id" + String(stat.id);
+    const idString = "id" + String(stat.id).slice(0, -1);
     useEffect(() => idDOMcustom(idString), []);
 
 
