@@ -1,8 +1,11 @@
 import { Assets } from "../../../lib/assets";
-import { StatsToReadableMin } from "../../../lib/constants";
+import { HOYO_DISC_SUB_RATE, StatsToReadableMin } from "../../../lib/constants";
 import { Disc, DiscSet, Stat } from "../../../lib/models/DiscSet";
 import { isFlat } from "../../../lib/Utils";
 
+type StatProp = {
+    stat: Stat
+}
 
 const DiscSetPreview = ({ discSet }: { discSet: DiscSet }) => {
     return (
@@ -51,10 +54,10 @@ const DiscStatsSummary = ({ disc }: { disc: Disc }) => {
                     </div>
                 </div>
                 <div className="divider-base divider-disc" />
-                <DiscStat stat={disc.main_stats} />
+                <DiscMainStat stat={disc.main_stats} />
                 <div className="divider-base divider-disc" />
                 {disc.substats.map((stat, index) => (
-                    <DiscStat stat={stat} key={index} />
+                    <DiscSubStat stat={stat} key={index} />
                 ))}
             </div>
         </div>
@@ -62,7 +65,7 @@ const DiscStatsSummary = ({ disc }: { disc: Disc }) => {
 };
 
 
-const DiscStat = ({ stat }: { stat: Stat }) => {
+const DiscMainStat = ({ stat }: StatProp) => {
     return (
         <div className="flex justify-between" >
             <img src={Assets.getStatIcon(stat)} className="w-[14px] h-[14px] m-1" />
@@ -70,6 +73,34 @@ const DiscStat = ({ stat }: { stat: Stat }) => {
                 {StatsToReadableMin[stat.id]}
             </span >
             <div className="divider-base divider-text" />
+            <span className="font-['zzz']">
+                {isFlat(stat)}
+            </span>
+        </div>
+    )
+}
+
+const numUpgrades = (stat: Stat) => {
+    const upgrades = (stat.value / HOYO_DISC_SUB_RATE[stat.id]) - 1;
+    console.log(stat.value);
+    return upgrades === 0 ? "" : "·".repeat(upgrades);
+}
+
+const DiscSubStat = ({ stat }: StatProp) => {
+    return (
+        <div className="flex justify-between" >
+            <img src={Assets.getStatIcon(stat)} className="w-[14px] h-[14px] m-1" />
+            <span className="font-['zzz']">
+                {StatsToReadableMin[stat.id]}
+            </span >
+            <div className="flex grow justify-end" >
+                <div className="flex mx-1">
+                    <span className="self-center font-['zzz'] tracking-widest text-amber-500">
+                        {numUpgrades(stat)}
+                    </span >
+                </div>
+
+            </div>
             <span className="font-['zzz']">
                 {isFlat(stat)}
             </span>

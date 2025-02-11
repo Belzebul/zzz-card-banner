@@ -147,6 +147,19 @@ export const HOYO_2P_DISCSET: { [id: number]: number[] } = {
     [DiscSetID.BLADE_SONG]: [AttributeID.CRIT_DMG, 16.0],
 }
 
+export const HOYO_DISC_SUB_RATE: { [id: number]: number } = {
+    [AttributeID.HP]: 112,
+    [AttributeID.HP_P]: 3,
+    [AttributeID.ATK]: 19,
+    [AttributeID.ATK_P]: 3,
+    [AttributeID.DEF]: 15,
+    [AttributeID.DEF_P]: 4.8,
+    [AttributeID.CRIT_RATE]: 2.4,
+    [AttributeID.CRIT_DMG]: 4.8,
+    [AttributeID.PEN_FLAT]: 9,
+    [AttributeID.ANOMALY_PROF]: 9,
+}
+
 export const StatsToReadableShort: { [id: number]: string } = {
     [AttributeID.HP]: "HP",
     [AttributeID.HP_P]: "HP %",
