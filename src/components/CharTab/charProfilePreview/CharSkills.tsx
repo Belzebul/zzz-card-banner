@@ -1,5 +1,6 @@
 import { Assets } from "../../../lib/assets";
 import { HOYO_SkillID } from "../../../lib/constants";
+import DB from "../../../lib/DB/db";
 import { SkillKit } from "../../../lib/models/SkillSet";
 
 const CharSkillSetPreview = ({ skillSet }: { skillSet: SkillKit }) => {
@@ -41,14 +42,22 @@ const getSkillLvl = (skillSet: SkillKit, id: number) => {
 }
 
 const getCoreLvl = (skillSet: SkillKit, id: number) => {
-    if (!(id in skillSet))
-        return "";
+    try {
+        if (!(id in skillSet))
+            return "";
 
-    const lvl = skillSet[id].level;
-    if (lvl > 1)
-        return String.fromCharCode(skillSet[id].level + 63);
+        const lvl = skillSet[id].level;
+        if (lvl > 1)
+            return String.fromCharCode(skillSet[id].level + 63);
 
-    return "X";
+        return "X";
+    } catch (e) {
+        console.log(e);
+        localStorage.clear();
+        DB.resetStore();
+    }
+
+    return "";
 }
 
 export default CharSkillSetPreview
