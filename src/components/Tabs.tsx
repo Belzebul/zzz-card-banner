@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import CalcTab from "./BuildCalcTab/CalcTab"
 import CharTab from "./CharTab/CharTab"
 import ImportTab from "./ImportTab/ImportTab"
 import SideMenu from "./SideMenu"
@@ -15,6 +16,7 @@ const Tabs = ({ show }: TabsProps) => {
             <Routes>
                 <Route path={BASE_PATH + "/"} element={<CharTab />} />
                 <Route path={BASE_PATH + "/import"} element={<ImportTab />} />
+                <Route path={BASE_PATH + "/calc"} element={<CalcTab />} />
             </Routes>
         </div>
     )

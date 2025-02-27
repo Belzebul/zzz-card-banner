@@ -40,7 +40,7 @@ const CharTab = () => {
             <div className="flex m-auto w-fit">
                 <div className="flex flex-col items-start">
                     <MenuChars />
-                    <div className="flex gap-2 m-2 bg-stone-900 rounded-2xl">
+                    <div className="flex relative gap-2 m-2 bg-stone-900 rounded-2xl">
                         <div ref={refToImage} className="flex gap-2 p-2 bg-stone-900 rounded-2xl">
                             <div className="flex gap-2 bg-stone-900 rounded-2xl">
                                 <CharProfile char={char} />
@@ -54,15 +54,17 @@ const CharTab = () => {
                                 <DiscSetPreview discSet={char.discSet} />
                             </div>
                         </div>
+                        <div className="flex absolute flex-row gap-2 m-auto w-fit z-50 right-1/2 translate-x-1/2 pr-2
+                          opacity-30 delay-200 duration-500 ease-in-out hover:opacity-90">
+                            <Suspense>
+                                <LazyPngButton refDiv={refToImage} />
+                                <LazyDownloadButton refDiv={refToImage} name={char.name} />
+                            </Suspense>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="flex flex-row gap-2 m-auto w-fit">
-                <Suspense>
-                    <LazyPngButton refDiv={refToImage} />
-                    <LazyDownloadButton refDiv={refToImage} name={char.name} />
-                </Suspense>
-            </div>
+
         </div >
     )
 }

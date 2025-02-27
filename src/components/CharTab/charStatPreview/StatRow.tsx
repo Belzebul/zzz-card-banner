@@ -8,7 +8,11 @@ import { idDOMcustom } from "../discSetPreview/DiscSetPreview";
 
 export const iconSize = 16
 
-const StatRow = ({ stat }: { stat: Stat }) => {
+type StatProp = {
+    stat: Stat
+}
+
+const StatRow = ({ stat }: StatProp) => {
     const idString = "id" + String(stat.id).slice(0, -1);
     useEffect(() => idDOMcustom(idString), []);
 

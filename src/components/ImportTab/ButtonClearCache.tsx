@@ -4,7 +4,6 @@ import DB from "../../lib/DB/db";
 const ButtonClearCache = () => {
     const [isOpen, setIsOpen] = useState(false);
     const openDialog = () => {
-        console.log(isOpen)
         setIsOpen(true);
     }
 

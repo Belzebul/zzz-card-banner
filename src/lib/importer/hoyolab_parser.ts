@@ -1,7 +1,7 @@
 import { AttributeID, AttrValues } from '../constants'
 import { Character } from '../models/Character'
 import { Disc, DiscSet, Stat } from '../models/DiscSet'
-import { SkillSet } from '../models/SkillSet'
+import { SkillKit } from '../models/SkillSet'
 import { WEngine } from '../models/WEngine'
 import { Avatar, Equip, HoyolabData, Property, Skill, Suit, Weapon } from '../types/hoyolab_types'
 import { fixPropertyId, readValue } from '../Utils'
@@ -44,9 +44,12 @@ export class ServiceHoyolab {
     }
 
     private getSkillSet(skills: Skill[]) {
-        let skillSet: SkillSet = {};
+        let skillSet: SkillKit = {};
         skills.map((skill) => {
-            skillSet[skill.skill_type] = skill
+            skillSet[skill.skill_type] = {
+                level: skill.level,
+                subSkills: [],
+            };
         });
         return skillSet;
     }
@@ -130,7 +133,7 @@ export class ServiceDiscset {
             substats.push(stat);
         }
 
-        return substats
+        return substats;
     }
 
 

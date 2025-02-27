@@ -2,7 +2,7 @@ import { AttributeID, AttrValues } from "../constants";
 import { BasicStatsObject } from "../types/basic_stats_object";
 import { CharMetadata } from "./CharMetadata";
 import { DiscSet } from "./DiscSet";
-import { SkillSet } from "./SkillSet";
+import { SkillKit } from "./SkillSet";
 import { StatsBase } from "./StatsBase";
 import { WEngine } from "./WEngine";
 
@@ -13,7 +13,7 @@ export class Character extends StatsBase {
     rank: number = 0
     charBase: BasicStatsObject = new StatsBase()
     charMetadata: CharMetadata = new CharMetadata()
-    skillSet: SkillSet = {}
+    skillKit: SkillKit = {}
     wengine: WEngine = new WEngine()
     discSet: DiscSet = new DiscSet()
 

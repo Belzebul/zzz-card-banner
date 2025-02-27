@@ -23,8 +23,7 @@ export const viewStatsChar = (charStats: Character) => {
             stats.push(stat);
         }
     });
-    console.log(charStats);
-    return stats
+    return stats;
 }
 
 export const viewStats = (statsBase: StatsBase): Stat[] => {

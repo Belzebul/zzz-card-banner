@@ -1,17 +1,17 @@
 import { Assets } from "../../../lib/assets";
-import { SkillID } from "../../../lib/constants";
-import { SkillSet } from "../../../lib/models/SkillSet";
+import { HOYO_SkillID } from "../../../lib/constants";
+import { SkillKit } from "../../../lib/models/SkillSet";
 
-const CharSkillSetPreview = ({ skillSet }: { skillSet: SkillSet }) => {
+const CharSkillSetPreview = ({ skillSet }: { skillSet: SkillKit }) => {
 
     return (
         <div className="flex flex-col absolute bottom-14 right-0 w-10 gap-3 z-30 drop-shadow-xl">
-            <SkillPreview lvl={getCoreLvl(skillSet, SkillID.CORE)} skillId={SkillID.CORE} />
-            <SkillPreview lvl={getSkillLvl(skillSet, SkillID.BASIC)} skillId={SkillID.BASIC} />
-            <SkillPreview lvl={getSkillLvl(skillSet, SkillID.DODGE)} skillId={SkillID.DODGE} />
-            <SkillPreview lvl={getSkillLvl(skillSet, SkillID.ASSIST)} skillId={SkillID.ASSIST} />
-            <SkillPreview lvl={getSkillLvl(skillSet, SkillID.SPECIAL)} skillId={SkillID.SPECIAL} />
-            <SkillPreview lvl={getSkillLvl(skillSet, SkillID.CHAIN)} skillId={SkillID.CHAIN} />
+            <SkillPreview lvl={getCoreLvl(skillSet, HOYO_SkillID.CORE)} skillId={HOYO_SkillID.CORE} />
+            <SkillPreview lvl={getSkillLvl(skillSet, HOYO_SkillID.BASIC)} skillId={HOYO_SkillID.BASIC} />
+            <SkillPreview lvl={getSkillLvl(skillSet, HOYO_SkillID.DODGE)} skillId={HOYO_SkillID.DODGE} />
+            <SkillPreview lvl={getSkillLvl(skillSet, HOYO_SkillID.ASSIST)} skillId={HOYO_SkillID.ASSIST} />
+            <SkillPreview lvl={getSkillLvl(skillSet, HOYO_SkillID.SPECIAL)} skillId={HOYO_SkillID.SPECIAL} />
+            <SkillPreview lvl={getSkillLvl(skillSet, HOYO_SkillID.CHAIN)} skillId={HOYO_SkillID.CHAIN} />
         </div>
     )
 }
@@ -33,14 +33,14 @@ const SkillPreview = ({ lvl, skillId }: SkillPreviewProps) => {
 }
 
 
-const getSkillLvl = (skillSet: SkillSet, id: number) => {
+const getSkillLvl = (skillSet: SkillKit, id: number) => {
     if (id in skillSet)
         return skillSet[id].level.toString();
 
     return "0";
 }
 
-const getCoreLvl = (skillSet: SkillSet, id: number) => {
+const getCoreLvl = (skillSet: SkillKit, id: number) => {
     if (!(id in skillSet))
         return "";
 

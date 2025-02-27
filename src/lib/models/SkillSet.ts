@@ -1,5 +1,15 @@
-import { Skill } from "../types/hoyolab_types"
+import { DamageParam } from "../types/hakushin_types"
 
-export type SkillSet = {
-    [id: number]: Skill
+export interface SkillKit {
+    [id: string]: Skill
+}
+
+export type Skill = {
+    level: number,
+    subSkills: SubSkill[]
+}
+
+export type SubSkill = {
+    name: string,
+    params: DamageParam[]
 }

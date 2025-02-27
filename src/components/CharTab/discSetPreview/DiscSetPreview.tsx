@@ -8,7 +8,16 @@ type StatProp = {
     stat: Stat
 }
 
-const DiscSetPreview = ({ discSet }: { discSet: DiscSet }) => {
+type DiscSetProp = {
+    discSet: DiscSet
+}
+
+type DiscProp = {
+    disc: Disc
+}
+
+
+const DiscSetPreview = ({ discSet }: DiscSetProp) => {
     return (
         <div className="flex w-[428px] gap-2 flex-wrap">
             <DiscCard disc={discSet.discs[1]} />
@@ -21,9 +30,7 @@ const DiscSetPreview = ({ discSet }: { discSet: DiscSet }) => {
     )
 }
 
-const DiscCard = (x: { disc: Disc | undefined }) => {
-    let disc = x.disc;
-
+const DiscCard = ({ disc }: DiscProp) => {
     if (!disc)
         disc = new Disc();
 
@@ -39,7 +46,7 @@ const DiscCard = (x: { disc: Disc | undefined }) => {
     )
 }
 
-const DiscStatsSummary = ({ disc }: { disc: Disc }) => {
+const DiscStatsSummary = ({ disc }: DiscProp) => {
     if (disc.lvl === -1)
         return (
             <></>
@@ -71,7 +78,7 @@ const DiscMainStat = ({ stat }: StatProp) => {
     useEffect(() => idDOMcustom(idString), []);
 
     return (
-        <div className={idString + ` flex justify-between pr-1 rounded-md `}>
+        <div className={idString + ` flex justify-between pr-1 rounded-md border-stone-700`}>
             <img src={Assets.getStatIcon(stat)} className="w-[14px] h-[14px] m-1" />
             <span className="font-['zzz']">
                 {StatsToReadableMin[stat.id]}
@@ -84,18 +91,12 @@ const DiscMainStat = ({ stat }: StatProp) => {
     )
 }
 
-const numUpgrades = (stat: Stat) => {
-    const upgrades = (stat.value / HOYO_DISC_SUB_RATE[stat.id]) - 1;
-    return "·".repeat(upgrades);
-}
-
 const DiscSubStat = ({ stat }: StatProp) => {
     const idString = "id" + String(stat.id).slice(0, -1);
     useEffect(() => idDOMcustom(idString), []);
 
-
     return (
-        <div className={idString + ` flex justify-between pr-1 rounded-md`} >
+        <div className={idString + ` flex justify-between pr-1 rounded-md  border-stone-700`} >
             <img src={Assets.getStatIcon(stat)} className="w-[14px] h-[14px] m-1" />
             <span className="font-['zzz']">
                 {StatsToReadableMin[stat.id]}
@@ -115,19 +116,24 @@ const DiscSubStat = ({ stat }: StatProp) => {
     )
 }
 
+const numUpgrades = (stat: Stat) => {
+    const upgrades = (stat.value / HOYO_DISC_SUB_RATE[stat.id]) - 1;
+    return "·".repeat(upgrades);
+}
+
 export const idDOMcustom = (idString: string) => {
     const hoverItems = document.querySelectorAll("." + idString);
 
     hoverItems.forEach(item => {
         item.addEventListener("mouseenter", () => {
             hoverItems.forEach((el) => {
-                el.classList.add("bg-stone-600"); // Adiciona a classe do hover
+                el.classList.add("hover-stats"); // Adiciona a classe do hover
             });
         });
 
         item.addEventListener("mouseleave", () => {
             hoverItems.forEach((el) => {
-                el.classList.remove("bg-stone-600"); // Remove o hover
+                el.classList.remove("hover-stats"); // Remove o hover
             });
         });
     });

@@ -1,4 +1,4 @@
-import { AttributeID, CampID, CharacterID, ElementTypeID, SkillID, WeaponTypeID } from "./constants"
+import { AttributeID, CampID, CharacterID, ElementTypeID, HOYO_SkillID, WeaponTypeID } from "./constants"
 
 export const ICON_FROM_STAT_MAPPING: { [id: number]: string } = {
     [AttributeID.HP]: "prop-hp-icon.png",
@@ -60,12 +60,12 @@ export const ICON_FROM_CAMP_MAPPING: { [id: number]: string } = {
 }
 
 export const ICON_FROM_SKILL_MAPPING: { [id: number]: string } = {
-    [SkillID.CORE]: "core.png",
-    [SkillID.BASIC]: "basic.png",
-    [SkillID.DODGE]: "dodge.png",
-    [SkillID.ASSIST]: "assist.png",
-    [SkillID.SPECIAL]: "special.png",
-    [SkillID.CHAIN]: "chain.png",
+    [HOYO_SkillID.CORE]: "core.png",
+    [HOYO_SkillID.BASIC]: "basic.png",
+    [HOYO_SkillID.DODGE]: "dodge.png",
+    [HOYO_SkillID.ASSIST]: "assist.png",
+    [HOYO_SkillID.SPECIAL]: "special.png",
+    [HOYO_SkillID.CHAIN]: "chain.png",
 }
 
 export const ICON_FROM_ROLE_MAPPING: { [id: number]: string } = {

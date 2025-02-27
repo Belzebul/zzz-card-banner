@@ -259,7 +259,7 @@ export const CampID = {
     STARS: 8,
 }
 
-export const SkillID = {
+export const HOYO_SkillID = {
     BASIC: 0,
     SPECIAL: 1,
     DODGE: 2,
@@ -268,4 +268,17 @@ export const SkillID = {
     ASSIST: 6,
 }
 
-export type SkillIDKey = keyof typeof SkillID
+export const ATTACKS_KEYS = {
+    BASIC: "Basic", // basic attack
+    DASH: "Dash", // dash attack
+    DODGE: "Dodge", // perfect dodge attack
+    SPECIAL: "Special",
+    EXSPECIAL: "EX Special",
+    QUICK: "Quick", // quick assist
+    DEFENSIVE: "Defensive", // defesive hit assist
+    FOLLOW_UP: "Follow-Up", // follow-up defensive or evasive assist
+    CHAIN: "Chain",
+    ULTIMATE: "Ultimate",
+}
+
+export type SkillIDKey = keyof typeof HOYO_SkillID

@@ -48,3 +48,4 @@ export interface Property {
     property_id: AttrValues
     base: string
 }
+
