@@ -1,7 +1,7 @@
 import { Assets } from "../../../lib/assets";
 import { HOYO_SkillID } from "../../../lib/constants";
 import DB from "../../../lib/DB/db";
-import { SkillKit } from "../../../lib/models/SkillSet";
+import { SkillKit } from "../../../lib/models/SkillKit";
 
 const CharSkillSetPreview = ({ skillSet }: { skillSet: SkillKit }) => {
 

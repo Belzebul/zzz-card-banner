@@ -1,7 +1,7 @@
 import { AttributeID, AttrValues } from '../constants'
 import { Character } from '../models/Character'
 import { Disc, DiscSet, Stat } from '../models/DiscSet'
-import { SkillKit } from '../models/SkillSet'
+import { SkillKit } from '../models/SkillKit'
 import { WEngine } from '../models/WEngine'
 import { Avatar, Equip, HoyolabData, Property, Skill, Suit, Weapon } from '../types/hoyolab_types'
 import { fixPropertyId, readValue } from '../Utils'

@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { CharacterID } from "../../lib/constants";
 import DB from "../../lib/DB/db";
 import { Character } from "../../lib/models/Character";
+import { SkillCalc } from "../../lib/models/SkillKit";
 
 
 
 
 const CalcTab = () => {
+    const corin = DB.getCharacterById(CharacterID.GRACE);
+    const corinSkills = new SkillCalc(corin.skillKit);
+    corinSkills.calcAllSkillsMult();
     return (
         <div className="w-full flex-col">
             <div className="flex flex-row mx-2 mt-2 max-w-[1150px] self-center overflow-x-auto scrollbar-thin">

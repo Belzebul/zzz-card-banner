@@ -2,7 +2,7 @@ import gameData from "../../data/base_data_characters.json"
 import { AttributeID, AttrValues, HOYO_SkillID } from "../constants"
 import { Character } from "../models/Character"
 import { CharMetadata } from "../models/CharMetadata"
-import { SkillKit, SubSkill } from "../models/SkillSet"
+import { SkillKit, SubSkill } from "../models/SkillKit"
 import { StatsBase } from "../models/StatsBase"
 import { BasicStatsObject } from "../types/basic_stats_object"
 import { Avatar, Hakushin_data as HakushinData, SkillHaku } from "../types/hakushin_types"
@@ -81,6 +81,7 @@ export class CharacterBuilder {
             if (subSkillHaku.Param !== undefined) {
                 const subSkill: SubSkill = {
                     name: subSkillHaku.Name,
+                    dmgPecent: [],
                     params: subSkillHaku.Param
                 };
 

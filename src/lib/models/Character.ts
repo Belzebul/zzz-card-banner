@@ -2,7 +2,7 @@ import { AttributeID, AttrValues } from "../constants";
 import { BasicStatsObject } from "../types/basic_stats_object";
 import { CharMetadata } from "./CharMetadata";
 import { DiscSet } from "./DiscSet";
-import { SkillKit } from "./SkillSet";
+import { SkillKit } from "./SkillKit";
 import { StatsBase } from "./StatsBase";
 import { WEngine } from "./WEngine";
 
