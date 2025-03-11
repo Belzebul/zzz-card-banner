@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CharacterID } from "../../lib/constants";
 import DB from "../../lib/DB/db";
 import { Character } from "../../lib/models/Character";
 import { SkillCalc } from "../../lib/models/SkillKit";
@@ -8,9 +7,7 @@ import { SkillCalc } from "../../lib/models/SkillKit";
 
 
 const CalcTab = () => {
-    const corin = DB.getCharacterById(CharacterID.GRACE);
-    const corinSkills = new SkillCalc(corin.skillKit);
-    corinSkills.calcAllSkillsMult();
+
     return (
         <div className="w-full flex-col">
             <div className="flex flex-row mx-2 mt-2 max-w-[1150px] self-center overflow-x-auto scrollbar-thin">
@@ -27,7 +24,10 @@ const SelectChar = () => {
     const [selectedOption, setSelectedOption] = useState<string>('');
 
     const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(DB.getCharacterById(event.target.value));
+        console.clear();
+        const char = DB.getCharacterById(event.target.value);
+        console.log(char.name);
+        new SkillCalc(char.skillKit).calcAllSkillsMult();
         setSelectedOption(event.target.value);
     };
 

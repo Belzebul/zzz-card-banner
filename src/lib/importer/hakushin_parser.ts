@@ -1,11 +1,11 @@
 import gameData from "../../data/base_data_characters.json"
-import { AttributeID, AttrValues, HOYO_SkillID } from "../constants"
+import { AttributeID, AttrValues, ElementTypeID, HOYO_SkillID } from "../constants"
 import { Character } from "../models/Character"
 import { CharMetadata } from "../models/CharMetadata"
-import { SkillKit, SubSkill } from "../models/SkillKit"
+import { HitData, SkillCalc, SkillKit, SubSkill } from "../models/SkillKit"
 import { StatsBase } from "../models/StatsBase"
 import { BasicStatsObject } from "../types/basic_stats_object"
-import { Avatar, Hakushin_data as HakushinData, SkillHaku } from "../types/hakushin_types"
+import { Avatar, DamageParam, Hakushin_data as HakushinData, SkillHaku } from "../types/hakushin_types"
 import { DECIMAL_STATS } from "../Utils"
 
 
@@ -22,14 +22,14 @@ export class CharacterBuilder {
     }
 
     public build() {
-        this.set_stats_base();
-        this.set_core_stats_base();
-        this.set_metadata();
-        this.setSkills();
+        this.setStatsBase();
+        this.setCoreStatsBase();
+        this.setCharMetadata();
+        this.setSkillsMetadata();
         return this.character;
     }
 
-    private set_metadata() {
+    private setCharMetadata() {
         const charMetadata = new CharMetadata();
         charMetadata.rarity = this.char_raw.Rarity === 3 ? "A" : "S";
         charMetadata.weapon = Object.keys(this.char_raw.WeaponType)[0];
@@ -40,7 +40,7 @@ export class CharacterBuilder {
 
     }
 
-    private set_stats_base() {
+    private setStatsBase() {
         const base_char: BasicStatsObject = new StatsBase();
         const stats = this.char_raw.Stats;
         const lvl_range = this.get_lvl_range();
@@ -58,31 +58,29 @@ export class CharacterBuilder {
         this.character.lvl = this.lvl;
     }
 
-    private setSkills() {
+    private setSkillsMetadata() {
         let skillKit: SkillKit = this.character.skillKit;
 
-        skillKit[HOYO_SkillID.BASIC].subSkills = this.loadSubSkills(this.char_raw.Skill.Basic);
+        skillKit[HOYO_SkillID.BASIC].subSkills = this.loadBasicAtkSkill(this.char_raw.Skill.Basic);
         skillKit[HOYO_SkillID.DODGE].subSkills = this.loadSubSkills(this.char_raw.Skill.Dodge);
         skillKit[HOYO_SkillID.ASSIST].subSkills = this.loadSubSkills(this.char_raw.Skill.Assist);
         skillKit[HOYO_SkillID.SPECIAL].subSkills = this.loadSubSkills(this.char_raw.Skill.Special);
         skillKit[HOYO_SkillID.CHAIN].subSkills = this.loadSubSkills(this.char_raw.Skill.Chain);
 
-        console.log(skillKit)
-        this.character.skillKit = skillKit;
+        this.character.skillKit = new SkillCalc(skillKit).calcAllSkillsMult();
     }
 
     private loadSubSkills(skill: SkillHaku) {
-        if (!("Description" in skill))
+        if (skill.Description === undefined)
             return [];
 
         let subSkills: SubSkill[] = [];
 
-        Object.values(skill.Description).forEach((subSkillHaku) => {
-            if (subSkillHaku.Param !== undefined) {
+        Object.values(skill.Description).forEach((desc) => {
+            if (desc.Param !== undefined) {
                 const subSkill: SubSkill = {
-                    name: subSkillHaku.Name,
-                    dmgPecent: [],
-                    params: subSkillHaku.Param
+                    name: desc.Name,
+                    hitsData: this.loadParamSkills(desc.Param),
                 };
 
                 subSkills.push(subSkill);
@@ -92,11 +90,41 @@ export class CharacterBuilder {
         return subSkills;
     }
 
+    private loadParamSkills(params: DamageParam[]): HitData[] {
+        let hitsDataAux: HitData[] = [];
+        params.forEach((hitRaw) => {
+            if (hitRaw.Param !== undefined) {
+                const hitAux = {
+                    name: hitRaw.Name,
+                    dmgPecent: 0.0,
+                    anomalyType: +Object.keys(this.char_raw.ElementType)[0],
+                    desc: hitRaw.Desc,
+                    params: hitRaw.Param,
+                }
+                hitsDataAux.push(hitAux);
+            }
+        })
+
+        return hitsDataAux;
+    }
+
+    private loadBasicAtkSkill(basic: SkillHaku) {
+        let subBasicAtkSkills = this.loadSubSkills(basic);
+
+        subBasicAtkSkills.forEach((_, subSkillId) => {
+            subBasicAtkSkills[subSkillId].hitsData.forEach((_, hitDataId) => {
+                subBasicAtkSkills[subSkillId].hitsData[hitDataId].anomalyType = ElementTypeID.PHYSICAL;
+            });
+        })
+
+        return subBasicAtkSkills;
+    }
+
     private calc_stat_growth(base: number, growth: number, asc_bonus: number) {
         return Math.floor(base + (this.lvl - 1) * growth / 10000 + asc_bonus);
     }
 
-    private set_core_stats_base() {
+    private setCoreStatsBase() {
         const core_lvl = this.character.skillKit[HOYO_SkillID.CORE].level;
 
         if (core_lvl == 1) return;

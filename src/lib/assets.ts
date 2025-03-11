@@ -29,7 +29,7 @@ export class Assets {
     public static getDiscSetById(id: string) {
         if (id === '0') return Assets.getBlank();
 
-        const discs_meta: DataDiscSetsMeta = discset_data
+        const discs_meta: DataDiscSetsMeta = discset_data;
         return Assets.getImageUrl(`/icon/disc/${discs_meta[+id]['icon']}`)
     }
 

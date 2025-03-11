@@ -64,6 +64,9 @@ export const CharacterID = {
     HARUMASA: "1201",
     ASTRA: "1311",
     EVELYN: "1321",
+    SOLDIER_0: "1381",
+    PULCHRA: "1351",
+    TRIGGER: "1361",
 }
 
 export const Stats: AttrValues[] = [
@@ -127,6 +130,8 @@ export const DiscSetID = {
     FANGED_METAL: 32600,
     ASTRAL_VOICE: 32800,
     BLADE_SONG: 32700,
+    SHADOW_HARMONY: 32900,
+    PHAETHONS_MELODY: 33000,
 }
 
 export const HOYO_2P_DISCSET: { [id: number]: number[] } = {
@@ -146,6 +151,8 @@ export const HOYO_2P_DISCSET: { [id: number]: number[] } = {
     [DiscSetID.FANGED_METAL]: [AttributeID.PHYS_DMG, 10.0],
     [DiscSetID.ASTRAL_VOICE]: [AttributeID.ATK_P, 10.0],
     [DiscSetID.BLADE_SONG]: [AttributeID.CRIT_DMG, 16.0],
+    [DiscSetID.SHADOW_HARMONY]: [AttributeID.ATK_P, 0.0],
+    [DiscSetID.PHAETHONS_MELODY]: [AttributeID.ANOMALY_MAST, 8.0],
 }
 
 export const HOYO_DISC_SUB_RATE: { [id: number]: number } = {

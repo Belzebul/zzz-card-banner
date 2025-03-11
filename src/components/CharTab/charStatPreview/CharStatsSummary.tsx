@@ -8,7 +8,7 @@ import { dataDiscSetsMeta as DataDiscSetsMeta } from "../../../lib/types/discs_m
 import StatRow from "./StatRow";
 
 const CharStatSummary = ({ char }: { char: Character }) => {
-    const { wengine } = char
+    const { wengine } = char;
     const total_stats = viewStatsChar(char)
     const wengine_stats = viewStats(wengine)
     const wengine_icon = Assets.getWEngine(wengine.id)
@@ -18,6 +18,7 @@ const CharStatSummary = ({ char }: { char: Character }) => {
     const wengine_lvl = (wengine.lvl === -1) ? "" : "Lv." + wengine.lvl;
     const wengine_stars = (wengine.star === 0) ? "" : "R" + wengine.star;
     const discs_meta: DataDiscSetsMeta = discset_data;
+    console.log(disc_set_bonus);
 
 
     const WEngineIcon = () => (

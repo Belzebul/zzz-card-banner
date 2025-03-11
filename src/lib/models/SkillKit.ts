@@ -1,4 +1,4 @@
-import { DamageParam, ParamValue } from "../types/hakushin_types"
+import { ParamValue } from "../types/hakushin_types"
 
 export interface SkillKit {
     [id: string]: Skill
@@ -6,13 +6,22 @@ export interface SkillKit {
 
 export type Skill = {
     level: number,
+    SkillId: number,
     subSkills: SubSkill[]
 }
 
 export type SubSkill = {
     name: string,
-    dmgPecent: number[],
-    params: DamageParam[]
+    hitsData: HitData[],
+}
+
+//esse tipo terá que ser modificado caso precisarmos do stunRatio
+export type HitData = {
+    name: string,
+    desc: string,
+    dmgPecent: number,
+    anomalyType: number,
+    params: { [key: string]: ParamValue },
 }
 
 export class SkillCalc {
@@ -27,35 +36,31 @@ export class SkillCalc {
         Object.entries(this.skillKit).forEach(([id, skill]) => {
             const skillCalculated = skill;
 
-            skillCalculated.subSkills = Object.values(skill.subSkills).map((subSkill) => {
+            skillCalculated.subSkills = skill.subSkills.map((subSkill) => {
                 console.log(subSkill.name);
-                const subSkillCalculated = subSkill;
 
-                let dmgPecentAux: number[] = [];
-                for (let [index, subSkillProp] of subSkill.params.entries()) {
-                    console.log(subSkillProp.Name);
-                    dmgPecentAux[index] = this.mountSkillMult(subSkillProp, skill.level);
-                    console.log(dmgPecentAux[index]);
-                }
+                subSkill.hitsData = subSkill.hitsData.map((hitData) => {
+                    hitData.dmgPecent = this.mountSkillMult(hitData, skill.level);
+                    console.log(hitData.name + ": " + hitData.dmgPecent + "%");
+                    return hitData;
+                });
 
-                subSkillCalculated.dmgPecent = dmgPecentAux;
-                return subSkillCalculated;
+                return subSkill;
             });
 
             this.skillKit[id] = skillCalculated;
         });
 
         console.log(this.skillKit);
+        return this.skillKit;
     }
 
-    private mountSkillMult(dmgParam: DamageParam, lvl: number) {
-        const regex = /\{(.*?)\}/g;
+    private mountSkillMult(hitData: HitData, lvl: number) {
+        const captureTxtInBraces = /\{(.*?)\}/g;
 
-        const resultado = dmgParam.Desc.replace(regex, (_match, capture) => {
+        const resultado = hitData.desc.replace(captureTxtInBraces, (_match, capture) => {
             const json = JSON.parse(this.fixJson(capture));
-
-            // @ts-ignore
-            return this.subSkillMult(dmgParam.Param[json.Skill], lvl);
+            return this.subSkillMult(hitData.params[json.Skill], lvl);
         });
 
         console.log("formula: " + resultado.replace("}", ""));

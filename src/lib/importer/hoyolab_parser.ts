@@ -48,6 +48,7 @@ export class ServiceHoyolab {
         skills.map((skill) => {
             skillSet[skill.skill_type] = {
                 level: skill.level,
+                SkillId: skill.skill_type,
                 subSkills: [],
             };
         });

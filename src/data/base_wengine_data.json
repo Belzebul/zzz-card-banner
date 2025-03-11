@@ -89,6 +89,26 @@
         "CHS": "「月相」-晦",
         "JA": "「月相」-晦"
     },
+    "13135": {
+        "icon": "Weapon_A_1351",
+        "rank": 3,
+        "type": 2,
+        "EN": "Box Cutter",
+        "desc": "An energy W-Engine modded from spare parts of a truck's engine. It converts the original cylinder into an energy storage unit, which is highly advantageous.",
+        "KO": "커터칼",
+        "CHS": "裁纸刀",
+        "JA": "ペーパーカッター"
+    },
+    "14133": {
+        "icon": "Weapon_S_1331",
+        "rank": 4,
+        "type": 3,
+        "EN": "Item_Weapon_S_1331_Name",
+        "desc": "Item_Weapon_S_1331_ShortDesc",
+        "KO": "Item_Weapon_S_1331_Name",
+        "CHS": "薇薇安测试音擎",
+        "JA": "Item_Weapon_S_1331_Name"
+    },
     "13008": {
         "icon": "Weapon_A_Common_08",
         "rank": 3,
@@ -219,6 +239,36 @@
         "CHS": "「电磁暴」-贰式",
         "JA": "「磁気嵐」-弐式"
     },
+    "14129": {
+        "icon": "Weapon_S_1291",
+        "rank": 4,
+        "type": 1,
+        "EN": "Item_Weapon_S_1291_Name",
+        "desc": "Item_Weapon_S_1291_ShortDesc",
+        "KO": "Item_Weapon_S_1291_Name",
+        "CHS": "雨果测试音擎",
+        "JA": "Item_Weapon_S_1291_Name"
+    },
+    "14138": {
+        "icon": "Weapon_S_1381",
+        "rank": 4,
+        "type": 1,
+        "EN": "Severed Innocence",
+        "desc": "...",
+        "KO": "순결한 희생",
+        "CHS": "牺牲洁纯",
+        "JA": "純然たる犠牲"
+    },
+    "14136": {
+        "icon": "Weapon_S_1361",
+        "rank": 4,
+        "type": 2,
+        "EN": "Spectral Gaze",
+        "desc": "...",
+        "KO": "탐혼의 눈동자",
+        "CHS": "索魂影眸",
+        "JA": "奪魂の瞑目"
+    },
     "13007": {
         "icon": "Weapon_A_Common_07",
         "rank": 3,
@@ -273,11 +323,11 @@
         "icon": "Weapon_S_1321",
         "rank": 4,
         "type": 1,
-        "EN": "Item_Weapon_S_1321_Name",
-        "desc": "The latest tactical W-Engine used by Public Security's elite Hollow squads, possessing a powerful Ether energy source. It's Zhu Yuan's favored model.",
-        "KO": "Item_Weapon_S_1321_Name",
-        "CHS": "伊芙琳测试音擎",
-        "JA": "Item_Weapon_S_1321_Name"
+        "EN": "Heartstring Nocturne",
+        "desc": "The sound of the strings, sharp as blades, cut through the night, protecting the one.",
+        "KO": "심금을 울리는 야상곡",
+        "CHS": "心弦夜响",
+        "JA": "心弦のノクターン"
     },
     "14117": {
         "icon": "Weapon_S_1171",
@@ -383,11 +433,11 @@
         "icon": "Weapon_S_1311",
         "rank": 4,
         "type": 4,
-        "EN": "Item_Weapon_S_1311_Name",
-        "desc": "The latest tactical W-Engine used by Public Security's elite Hollow squads, possessing a powerful Ether energy source. It's Zhu Yuan's favored model.",
-        "KO": "Item_Weapon_S_1311_Name",
-        "CHS": "耀嘉音测试音擎",
-        "JA": "Item_Weapon_S_1311_Name"
+        "EN": "Elegant Vanity",
+        "desc": "Underneath the radiant splendor, her genuine self has never been hidden.",
+        "KO": "우아한 베니티백",
+        "CHS": "玲珑妆匣",
+        "JA": "優美のヴァニティ"
     },
     "13127": {
         "icon": "Weapon_A_1271",
