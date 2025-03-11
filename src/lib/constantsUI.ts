@@ -99,7 +99,7 @@ export const ICON_FROM_ROLE_MAPPING: { [id: number]: string } = {
     [CharacterID.ASTRA]: 'IconRoleSelect36.webp',
     [CharacterID.EVELYN]: 'IconRoleSelect37.webp',
     [CharacterID.PULCHRA]: 'IconRoleSelect38.webp',
-    [CharacterID.EVELYN]: 'IconRoleSelect39.webp',
+    [CharacterID.TRIGGER]: 'IconRoleSelect39.webp',
     [CharacterID.SOLDIER_0]: 'IconRoleSelect40.webp',
 }
 
