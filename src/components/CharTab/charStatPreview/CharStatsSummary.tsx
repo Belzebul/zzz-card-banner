@@ -18,7 +18,6 @@ const CharStatSummary = ({ char }: { char: Character }) => {
     const wengine_lvl = (wengine.lvl === -1) ? "" : "Lv." + wengine.lvl;
     const wengine_stars = (wengine.star === 0) ? "" : "R" + wengine.star;
     const discs_meta: DataDiscSetsMeta = discset_data;
-    console.log(disc_set_bonus);
 
 
     const WEngineIcon = () => (
